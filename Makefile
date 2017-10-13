@@ -37,7 +37,8 @@ INC_PATH	=	include
 
 OBJ_PATH	=	obj
 
-SRC_NAME	=	main.c
+SRC_NAME	=	main.c\
+				fonctions.c
 
 INC_NAME	=	fractol.h
 
