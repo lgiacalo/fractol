@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/15 03:48:17 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/15 23:31:36 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,12 @@ void	put_pixel(t_mlx *mlx, int x, int y, int i)
 
 void	mandelbrot(t_mlx *mlx)
 {
-//	double	x1 = -2.1;
-	double	x1 = 0;
-//	double	x2 = 0.6;
-//	double	y1 = -1.2;
-	double	y1 = 0;
-//	double	y2 = 1.2;
+	double	x1 = mlx->win[0].c1.x;
+	double	y1 = mlx->win[0].c1.y;
 
 	int		i_max = mlx->win[0].iter_max;
 	double	zoom = mlx->win[0].zoom	;
 
-//	int	img_x = (x2 - x1) * zoom;
-//	int	img_y = (y2 - y1) * zoom;
 	int	img_x = XXX;
 	int	img_y = YYY;
 
@@ -50,8 +44,10 @@ void	mandelbrot(t_mlx *mlx)
 		y = 0;
 		while (y < img_y)
 		{
-			double c_r = x / zoom + x1;
-			double c_i = y / zoom + y1;
+//			double c_r = (x + x1) / (zoom);
+//			double c_i = (y + y1) / (zoom);
+			double c_r = (x) / (zoom) - x1 / 5000;
+			double c_i = (y) / (zoom) - y1 / 5000;
 			double z_r = 0;
 			double z_i = 0;
 			int i = 0;

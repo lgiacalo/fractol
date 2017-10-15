@@ -39,7 +39,8 @@ OBJ_PATH	=	obj
 
 SRC_NAME	=	main.c\
 				fonctions.c\
-				mandelbrot.c
+				mandelbrot.c\
+				hook.c
 
 INC_NAME	=	fractol.h
 

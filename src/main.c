@@ -6,45 +6,11 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/15 03:43:09 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/15 23:51:29 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int		my_key_funct(int keycode, t_mlx *mlx)
-{
-	(void)mlx;
-	if (keycode == KEY_ESC)
-	{
-		ft_fdprintf(1, "Valeur de bit_per_pixel = [%d]\n", mlx->win[0].bits_per_pixel);
-		ft_fdprintf(1, "Valeur de size_line = [%d]\n", mlx->win[0].size_line);
-		ft_fdprintf(1, "Valeur de endian = [%d]\n", mlx->win[0].endian);
-		exit(0);
-	}
-	if (keycode == KEY_P || keycode == KEY_M)
-	{
-		if (keycode == KEY_P)
-		{
-			mlx->win[0].zoom += 20;
-			mlx->win[0].iter_max += 4;
-		}
-		else
-		{
-			mlx->win[0].zoom -= 20;
-			mlx->win[0].iter_max -= 4;
-		}
-		mandelbrot(mlx);
-	}
-	return (0);
-}
-
-int		my_mouse_funct(int button, int x, int y, t_mlx *mlx)
-{
-	(void)mlx;
-	ft_fdprintf(1, "Mouse but[%d]-x[%d]-y[%d]\n", button, x, y);
-	return (0);
-}
 
 int	ft_init(t_mlx *mlx)
 {
@@ -69,7 +35,9 @@ int		main(int argc, char **argv)
 	t_mlx	mlx;
 
 	(void)argv;
-	mlx.win[0].zoom = 100;
+	mlx.win[0].c1.x = 10000;
+	mlx.win[0].c1.y = 10000;
+	mlx.win[0].zoom = 250;
 	mlx.win[0].iter_max = 50;
 	if (argc < 2 || argc > 3)
 		ft_usage();

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/15 01:39:07 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/15 23:30:21 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct		s_win
 	int				size_line;
 	int				endian;
 	char			*img_str;
+	t_coord			c1;
 	double			zoom;
 	int				iter_max;
 }					t_win;
@@ -62,5 +63,8 @@ typedef struct		s_mlx
 void				ft_usage(void);
 
 void				mandelbrot(t_mlx *mlx);
+
+int					my_key_funct(int keycode, t_mlx *mlx);
+int					my_mouse_funct(int button, int x, int y, t_mlx *mlx);
 
 #endif
