@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/15 23:30:21 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 01:17:59 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ typedef struct		s_coord
 	int				y;
 }					t_coord;
 
+typedef struct		s_dcoord
+{
+	double			x;
+	double			y;
+}					t_dcoord;
+
 typedef struct		s_win
 {
 	int				fractol;
@@ -48,7 +54,7 @@ typedef struct		s_win
 	int				size_line;
 	int				endian;
 	char			*img_str;
-	t_coord			c1;
+	t_coord			p;
 	double			zoom;
 	int				iter_max;
 }					t_win;
@@ -62,9 +68,12 @@ typedef struct		s_mlx
 
 void				ft_usage(void);
 
+void				init_mandelbrot(t_mlx *mlx);
 void				mandelbrot(t_mlx *mlx);
 
 int					my_key_funct(int keycode, t_mlx *mlx);
 int					my_mouse_funct(int button, int x, int y, t_mlx *mlx);
+
+void				put_pixel(t_mlx *mlx, int x, int y, int i);
 
 #endif

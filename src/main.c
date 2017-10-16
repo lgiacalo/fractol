@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/16 03:14:33 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 01:20:35 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	ft_init(t_mlx *mlx)
 {
 	if (!(mlx->mlx_ptr = mlx_init(0)))
 		return (EXIT_FAILURE);
-	if (!(mlx->win[0].win_ptr = mlx_new_window(mlx->mlx_ptr, 1000, 1000, "Fractol")))
+	if (!(mlx->win[0].win_ptr = mlx_new_window(mlx->mlx_ptr, XXX, YYY, "Fractol")))
 		return (EXIT_FAILURE);
-	if (!(mlx->win[0].img_ptr = mlx_new_image(mlx->mlx_ptr, 1000, 1000)))
+	if (!(mlx->win[0].img_ptr = mlx_new_image(mlx->mlx_ptr, YYY, YYY)))
 		return (EXIT_FAILURE);
 	if (!(mlx->win[0].img_str = mlx_get_data_addr(mlx->win[0].img_ptr, &(mlx->win[0].bits_per_pixel),
 					&(mlx->win[0].size_line), &(mlx->win[0].endian))))
@@ -35,13 +35,10 @@ int		main(int argc, char **argv)
 	t_mlx	mlx;
 
 	(void)argv;
-	mlx.win[0].c1.x = 400;
-	mlx.win[0].c1.y = 400;
-	mlx.win[0].zoom = 250;
-	mlx.win[0].iter_max = 50;
 	if (argc < 2 || argc > 3)
 		ft_usage();
 	ft_fdprintf(1, "Debut Fractol !!\n\n");
+	init_mandelbrot(&mlx);
 	ft_init(&mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/16 03:27:02 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 01:07:09 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 	{
 		if (keycode == KEY_P)
 		{
-			mlx->win[0].zoom += 20;
+			mlx->win[0].zoom *= 1.5;
 			mlx->win[0].iter_max += 2;
 		}
 		else
 		{
-			mlx->win[0].zoom -= 20;
+			mlx->win[0].zoom /= 1.5;
 			mlx->win[0].iter_max -= 2;
 		}
 		printf("Zoom = [%lf]\n", mlx->win[0].zoom);
@@ -41,37 +41,42 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 		mandelbrot(mlx);
 	}
 	if (keycode == KEY_H)
-		mlx->win[0].c1.y -= 50;
+		mlx->win[0].p.y -= 50;
 	else if (keycode == KEY_B)
-		mlx->win[0].c1.y += 50;
+		mlx->win[0].p.y += 50;
 	else if (keycode == KEY_G)
-		mlx->win[0].c1.x -= 50;
+		mlx->win[0].p.x -= 50;
 	else if (keycode == KEY_D)
-		mlx->win[0].c1.x += 50;
-	ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].c1.x, mlx->win[0].c1.y);
+		mlx->win[0].p.x += 50;
+	ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].p.x, mlx->win[0].p.y);
 	mandelbrot(mlx);
 	return (0);
 }
 
 int		my_mouse_funct(int button, int x, int y, t_mlx *mlx)
 {
-	(void)mlx;
+	double tmp;
+
 	ft_fdprintf(1, "Mouse but[%d]-x[%d]-y[%d]\n", button, x, y);
 	if (button == 1)
 	{
-		mlx->win[0].zoom += 20;
+		mlx->win[0].zoom *= 1.2;
 		mlx->win[0].iter_max += 2;
-		mlx->win[0].c1.x = x;
-		mlx->win[0].c1.y = y;
-		ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].c1.x, mlx->win[0].c1.y);
+		tmp = mlx->win[0].p.x;
+		mlx->win[0].p.x -= (x - tmp) * 1.2 - (x - tmp);
+		tmp = mlx->win[0].p.y;
+		mlx->win[0].p.y += (tmp - y) * 1.2 - (tmp - y);
+		ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].p.x, mlx->win[0].p.y);
 	}
 	else if (button == 2)
 	{
-		mlx->win[0].zoom -= 20;
+		mlx->win[0].zoom /= 1.2;
 		mlx->win[0].iter_max -= 2;
-		mlx->win[0].c1.x += mlx->win[0].c1.x + x;
-		mlx->win[0].c1.y += mlx->win[0].c1.y + y;
-		ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].c1.x, mlx->win[0].c1.y);
+		tmp = mlx->win[0].p.x;
+		mlx->win[0].p.x -= (x - tmp) / 1.2 - (x - tmp);
+		tmp = mlx->win[0].p.y;
+		mlx->win[0].p.y += (tmp - y) / 1.2 - (tmp - y);
+		ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].p.x, mlx->win[0].p.y);
 	}
 	mandelbrot(mlx);
 	return (0);
