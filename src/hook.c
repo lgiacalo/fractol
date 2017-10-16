@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/16 00:04:36 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/16 03:27:02 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int		my_mouse_funct(int button, int x, int y, t_mlx *mlx)
 	{
 		mlx->win[0].zoom += 20;
 		mlx->win[0].iter_max += 2;
-		mlx->win[0].c1.x *= 0.98  ;
-		mlx->win[0].c1.y *= 0.93;
+		mlx->win[0].c1.x = x;
+		mlx->win[0].c1.y = y;
 		ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].c1.x, mlx->win[0].c1.y);
 	}
 	else if (button == 2)

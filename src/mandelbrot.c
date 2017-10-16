@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/15 23:31:36 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/16 03:14:00 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	mandelbrot(t_mlx *mlx)
 		{
 //			double c_r = (x + x1) / (zoom);
 //			double c_i = (y + y1) / (zoom);
-			double c_r = (x) / (zoom) - x1 / 5000;
-			double c_i = (y) / (zoom) - y1 / 5000;
+			double c_r = (x - x1) / (zoom);
+			double c_i = (y - y1) / (zoom);
 			double z_r = 0;
 			double z_i = 0;
 			int i = 0;

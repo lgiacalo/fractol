@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/15 23:51:29 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/16 03:14:33 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int		main(int argc, char **argv)
 	t_mlx	mlx;
 
 	(void)argv;
-	mlx.win[0].c1.x = 10000;
-	mlx.win[0].c1.y = 10000;
+	mlx.win[0].c1.x = 400;
+	mlx.win[0].c1.y = 400;
 	mlx.win[0].zoom = 250;
 	mlx.win[0].iter_max = 50;
 	if (argc < 2 || argc > 3)
