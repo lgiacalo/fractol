@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 01:18:04 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 02:15:23 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	mandelbrot(t_mlx *mlx)
 			c.x = (b.x - mlx->win[k].p.x) / (mlx->win[k].zoom);
 			c.y = (b.y - mlx->win[k].p.y) / (mlx->win[k].zoom);
 			i = mandelbrot_calcul(mlx, c);
-			put_pixel(mlx, b.x, b.y, i);
+			put_pixel(mlx, b, i);
 		}
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr, mlx->win[0].img_ptr, 0, 0);

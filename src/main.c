@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 01:20:35 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 02:19:33 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		main(int argc, char **argv)
 		ft_usage();
 	ft_fdprintf(1, "Debut Fractol !!\n\n");
 	init_mandelbrot(&mlx);
+	mlx.color = 1;
 	ft_init(&mlx);
 	return (0);
 }

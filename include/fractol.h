@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 01:17:59 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 02:18:41 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct		s_mlx
 	void			*mlx_ptr;
 	int				nbr;
 	t_win			win[2];
+	int				color;
 }					t_mlx;
 
 void				ft_usage(void);
@@ -74,6 +75,6 @@ void				mandelbrot(t_mlx *mlx);
 int					my_key_funct(int keycode, t_mlx *mlx);
 int					my_mouse_funct(int button, int x, int y, t_mlx *mlx);
 
-void				put_pixel(t_mlx *mlx, int x, int y, int i);
+void				put_pixel(t_mlx *mlx, t_coord b, int i);
 
 #endif
