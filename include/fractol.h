@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 19:07:34 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 20:29:25 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct		s_win
 	t_coord			p;
 	double			zoom;
 	int				iter_max;
+	t_dcoord		c;
 }					t_win;
 
 typedef struct		s_mlx

@@ -6,11 +6,22 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 19:03:45 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 20:37:29 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	my_mouse_julia_funct(int x, int y, t_mlx *mlx)
+{
+	if (x > 1 && x < 1000 && y > 1 && y < 1000)
+	{
+		mlx->win[0].c.x = x/ 10000;
+		mlx->win[0].c.y = y/ 10000;
+		julia(mlx);
+	}
+	return (0);
+}
 
 int	ft_init(t_mlx *mlx)
 {
@@ -23,10 +34,11 @@ int	ft_init(t_mlx *mlx)
 	if (!(mlx->win[0].img_str = mlx_get_data_addr(mlx->win[0].img_ptr, &(mlx->win[0].bits_per_pixel),
 					&(mlx->win[0].size_line), &(mlx->win[0].endian))))
 		return (EXIT_FAILURE);
-//	mandelbrot(mlx);
+	//	mandelbrot(mlx);
 	julia(mlx);
 	mlx_key_hook(mlx->win[0].win_ptr, &my_key_funct, mlx);
 	mlx_mouse_hook(mlx->win[0].win_ptr, &my_mouse_funct, mlx);
+	mlx_hook(mlx->win[0].win_ptr, 6, 0, &my_mouse_julia_funct, mlx);
 	mlx_loop(mlx->mlx_ptr);
 	return (1);
 }
@@ -39,7 +51,7 @@ int		main(int argc, char **argv)
 	if (argc < 2 || argc > 3)
 		ft_usage();
 	ft_fdprintf(1, "Debut Fractol !!\n\n");
-//	init_mandelbrot(&mlx);
+	//	init_mandelbrot(&mlx);
 	init_julia(&mlx);
 	mlx.color = 1;
 	ft_init(&mlx);

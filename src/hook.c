@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 19:08:50 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 20:28:28 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 		}
 		printf("Zoom = [%lf]\n", mlx->win[0].zoom);
 		ft_fdprintf(1, "iter_max = [%d]\n", mlx->win[0].iter_max);
-//		mandelbrot(mlx);
-		julia(mlx);
 	}
 	if (keycode == 8)
 		mlx->color += 10;
-	if (keycode == KEY_H)
+	else if (keycode == 24)
+		mlx->win[0].iter_max += 2;
+	else if (keycode == 27)
+		mlx->win[0].iter_max -= 2;
+	else if (keycode == KEY_H)
 		mlx->win[0].p.y -= 50;
 	else if (keycode == KEY_B)
 		mlx->win[0].p.y += 50;

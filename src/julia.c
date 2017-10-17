@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 05:24:22 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 19:07:10 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 20:30:42 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void	init_julia(t_mlx *mlx)
 	win = &mlx->win[0];
 	win->p.x = XXX / 2;
 	win->p.y = YYY / 2;
-	win->zoom= 200;
-	win->iter_max = 100;
+	win->zoom= 300;
+	win->iter_max = 120;
+	win->c.x = 0.285;
+	win->c.y = 0.01;
 }
 
 void	julia(t_mlx *mlx)
@@ -41,8 +43,8 @@ void	julia(t_mlx *mlx)
 			while (((z_r * z_r) + (z_i * z_i)) < 4 && i < mlx->win[0].iter_max)
 			{
 				tmp = z_r;
-				z_r = z_r * z_r - z_i * z_i + 0.285;
-				z_i = 2 * z_i * tmp + 0.01;
+				z_r = z_r * z_r - z_i * z_i + mlx->win[0].c.x;
+				z_i = 2 * z_i * tmp + mlx->win[0].c.y;
 				i++;
 			}
 			put_pixel(mlx, b, i);
