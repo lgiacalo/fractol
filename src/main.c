@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 02:19:33 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 05:36:30 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	ft_init(t_mlx *mlx)
 	if (!(mlx->win[0].img_str = mlx_get_data_addr(mlx->win[0].img_ptr, &(mlx->win[0].bits_per_pixel),
 					&(mlx->win[0].size_line), &(mlx->win[0].endian))))
 		return (EXIT_FAILURE);
-	mandelbrot(mlx);
+//	mandelbrot(mlx);
+	julia(mlx);
 	mlx_key_hook(mlx->win[0].win_ptr, &my_key_funct, mlx);
 	mlx_mouse_hook(mlx->win[0].win_ptr, &my_mouse_funct, mlx);
 	mlx_loop(mlx->mlx_ptr);
@@ -38,7 +39,7 @@ int		main(int argc, char **argv)
 	if (argc < 2 || argc > 3)
 		ft_usage();
 	ft_fdprintf(1, "Debut Fractol !!\n\n");
-	init_mandelbrot(&mlx);
+//	init_mandelbrot(&mlx);
 	mlx.color = 1;
 	ft_init(&mlx);
 	return (0);

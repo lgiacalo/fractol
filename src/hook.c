@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 02:24:10 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 05:23:57 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 		mandelbrot(mlx);
 	}
 	if (keycode == 8)
-		mlx->color++;
+		mlx->color += 10;
 	if (keycode == KEY_H)
 		mlx->win[0].p.y -= 50;
 	else if (keycode == KEY_B)
