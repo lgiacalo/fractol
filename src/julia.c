@@ -6,19 +6,53 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 05:24:22 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 05:54:54 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 19:07:10 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+
+void	init_julia(t_mlx *mlx)
+{
+	t_win	*win;
+
+	win = &mlx->win[0];
+	win->p.x = XXX / 2;
+	win->p.y = YYY / 2;
+	win->zoom= 200;
+	win->iter_max = 100;
+}
+
+void	julia(t_mlx *mlx)
+{
+	double		tmp;
+	t_coord		b;
+
+	b.x = -1;
+	while (++b.x < XXX)
+	{
+		b.y = -1;
+		while (++b.y < YYY)
+		{
+			double	z_r = (b.x - mlx->win[0].p.x) / mlx->win[0].zoom;
+			double	z_i = (b.y - mlx->win[0].p.y) / mlx->win[0].zoom;
+			int		i = 0;
+			while (((z_r * z_r) + (z_i * z_i)) < 4 && i < mlx->win[0].iter_max)
+			{
+				tmp = z_r;
+				z_r = z_r * z_r - z_i * z_i + 0.285;
+				z_i = 2 * z_i * tmp + 0.01;
+				i++;
+			}
+			put_pixel(mlx, b, i);
+		}
+	}
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr, mlx->win[0].img_ptr, 0, 0);
+}
+
+
 /*
-   void	init_julia(t_mlx *mlx)
-   {
-
-   }
-   */
-
 void	julia(t_mlx *mlx)
 {
 	double		tmp;
@@ -55,7 +89,10 @@ void	julia(t_mlx *mlx)
 				z_i = 2 * z_i * tmp + c_i;
 				i++;
 			}
-			put_pixel(mlx, b, i);
+			if (i == iter_max)
+				put_pixel(mlx, b, i);
 		}
 	}
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr, mlx->win[0].img_ptr, 0, 0);
 }
+*/

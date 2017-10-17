@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 05:37:03 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 19:07:34 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void				ft_usage(void);
 void				init_mandelbrot(t_mlx *mlx);
 void				mandelbrot(t_mlx *mlx);
 
+void				init_julia(t_mlx *mlx);
 void				julia(t_mlx *mlx);
 
 int					my_key_funct(int keycode, t_mlx *mlx);

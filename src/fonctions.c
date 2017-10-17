@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 05:55:09 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 19:00:31 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	put_pixel(t_mlx *mlx, t_coord b, int i)
 {
 	char	*str = mlx->win[0].img_str;
 	int		size_line = mlx->win[0].size_line;
-//	int		color = mlx->color;
+	int		color = mlx->color;
 	(void)i;
-/*
+
 	if (i != mlx->win[0].iter_max)
 	{
 
@@ -32,10 +32,10 @@ void	put_pixel(t_mlx *mlx, t_coord b, int i)
 	}
 	else
 	{
-*/		str[b.x * 4 + b.y * size_line] = 30;
+		str[b.x * 4 + b.y * size_line] = 30;
 		str[(b.x * 4) + (b.y * size_line) + 1] = 30;
 		str[(b.x * 4) + (b.y * size_line) + 2] = 30;
-//	}
+	}
 
 }
 

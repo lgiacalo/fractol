@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 05:23:57 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/17 19:08:50 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 		}
 		printf("Zoom = [%lf]\n", mlx->win[0].zoom);
 		ft_fdprintf(1, "iter_max = [%d]\n", mlx->win[0].iter_max);
-		mandelbrot(mlx);
+//		mandelbrot(mlx);
+		julia(mlx);
 	}
 	if (keycode == 8)
 		mlx->color += 10;
@@ -51,7 +52,8 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 	else if (keycode == KEY_D)
 		mlx->win[0].p.x += 50;
 	ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].p.x, mlx->win[0].p.y);
-	mandelbrot(mlx);
+//	mandelbrot(mlx);
+	julia(mlx);
 	return (0);
 }
 
@@ -80,6 +82,7 @@ int		my_mouse_funct(int button, int x, int y, t_mlx *mlx)
 		mlx->win[0].p.y += (tmp - y) / 1.2 - (tmp - y);
 		ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].p.x, mlx->win[0].p.y);
 	}
-	mandelbrot(mlx);
+//	mandelbrot(mlx);
+	julia(mlx);
 	return (0);
 }
