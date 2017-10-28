@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 19:08:04 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/29 00:44:39 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	init_mandelbrot(t_mlx *mlx)
 	t_win	*win;
 
 	win = &mlx->win[0];
-	win->p.x = XXX / 2;
-	win->p.y = YYY / 2;
-	win->zoom = 100;
-	win->iter_max = 50;
+	win->p.x = 700;
+	win->p.y = 500;
+	win->zoom = 330;
+	win->iter_max = 60;
 }
 
 int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)

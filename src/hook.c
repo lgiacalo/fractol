@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/29 00:34:27 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/29 00:50:21 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,12 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 		ft_fdprintf(1, "Valeur de endian = [%d]\n", mlx->win[0].endian);
 		exit(0);
 	}
-	if (keycode == KEY_P || keycode == KEY_M)
+	if (keycode == KEY_PLUS || keycode == KEY_MOINS)
 	{
-		if (keycode == KEY_P)
-		{
-			mlx->win[0].zoom *= 1.5;
-			mlx->win[0].iter_max += 2;
-		}
+		if (keycode == KEY_PLUS)
+			my_mouse_funct(1, 500, 500, mlx);
 		else
-		{
-			mlx->win[0].zoom /= 1.5;
-			mlx->win[0].iter_max -= 2;
-		}
+			my_mouse_funct(2, 500, 500, mlx);
 		printf("Zoom = [%lf]\n", mlx->win[0].zoom);
 		ft_fdprintf(1, "iter_max = [%d]\n", mlx->win[0].iter_max);
 	}
@@ -45,13 +39,13 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 		mlx->win[0].iter_max += 2;
 	else if (keycode == 27)
 		mlx->win[0].iter_max -= 2;
-	else if (keycode == KEY_H)
+	else if (keycode == KEY_HAUT)
 		mlx->win[0].p.y -= 50;
-	else if (keycode == KEY_B)
+	else if (keycode == KEY_BAS)
 		mlx->win[0].p.y += 50;
-	else if (keycode == KEY_G)
+	else if (keycode == KEY_GAUCHE)
 		mlx->win[0].p.x -= 50;
-	else if (keycode == KEY_D)
+	else if (keycode == KEY_DROITE)
 		mlx->win[0].p.x += 50;
 	ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].p.x, mlx->win[0].p.y);
 	draw_fractal(mlx);
@@ -63,7 +57,7 @@ int		my_mouse_funct(int button, int x, int y, t_mlx *mlx)
 	double tmp;
 
 	ft_fdprintf(1, "Mouse but[%d]-x[%d]-y[%d]\n", button, x, y);
-	if (button == 1)
+	if (button == 1 || button == 5)
 	{
 		mlx->win[0].zoom *= 1.2;
 		mlx->win[0].iter_max += 2;
@@ -73,7 +67,7 @@ int		my_mouse_funct(int button, int x, int y, t_mlx *mlx)
 		mlx->win[0].p.y += (tmp - y) * 1.2 - (tmp - y);
 		ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].p.x, mlx->win[0].p.y);
 	}
-	else if (button == 2)
+	else if (button == 2 || button == 4)
 	{
 		mlx->win[0].zoom /= 1.2;
 		mlx->win[0].iter_max -= 2;
@@ -83,8 +77,6 @@ int		my_mouse_funct(int button, int x, int y, t_mlx *mlx)
 		mlx->win[0].p.y += (tmp - y) / 1.2 - (tmp - y);
 		ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].p.x, mlx->win[0].p.y);
 	}
-//	mandelbrot(mlx);
-//	julia(mlx);
 	draw_fractal(mlx);
 	return (0);
 }

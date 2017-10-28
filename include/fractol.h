@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/29 00:26:42 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/29 00:46:11 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@
 
 # define KEY_ESC	53
 
-# define KEY_P		69
-# define KEY_M		78
+# define KEY_PLUS	69
+# define KEY_MOINS	78
 
-# define KEY_H		126
-# define KEY_B		125
-# define KEY_D		124
-# define KEY_G		123
+# define KEY_HAUT	126
+# define KEY_BAS	125
+# define KEY_DROITE	124
+# define KEY_GAUCHE	123
 
 typedef struct		s_coord
 {
