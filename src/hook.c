@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 20:28:28 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/29 00:34:27 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 	else if (keycode == KEY_D)
 		mlx->win[0].p.x += 50;
 	ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].p.x, mlx->win[0].p.y);
-//	mandelbrot(mlx);
-	julia(mlx);
+	draw_fractal(mlx);
 	return (0);
 }
 
@@ -85,6 +84,7 @@ int		my_mouse_funct(int button, int x, int y, t_mlx *mlx)
 		ft_fdprintf(1, "x1[%d]--y1[%d]\n", mlx->win[0].p.x, mlx->win[0].p.y);
 	}
 //	mandelbrot(mlx);
-	julia(mlx);
+//	julia(mlx);
+	draw_fractal(mlx);
 	return (0);
 }

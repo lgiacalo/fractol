@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/28 23:03:05 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/29 00:26:06 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,33 +35,14 @@ void	put_pixel(t_mlx *mlx, t_coord b, int i)
 
 }
 
-/*
-void	put_pixel(t_mlx *mlx, t_coord b, int i)
+void	draw_fractal(t_mlx *mlx)
 {
-	char	*str = mlx->win[0].img_str;
-	int		size_line = mlx->win[0].size_line;
-	int		color = mlx->color;
-	(void)i;
-
-	if (i != mlx->win[0].iter_max)
-	{
-
-		str[b.x * 4 + b.y * size_line] = (((i + color)) * 90) % 255;
-		str[(b.x * 4) + (b.y * size_line) + 1] = (((i + color)) * 120) % 255;
-		str[(b.x * 4) + (b.y * size_line) + 2] = (((i + color)) * 150) % 255;
-//		str[b.x * 4 + b.y * size_line] = (int((log(i + color)) * 50) % 255;
-//		str[(b.x * 4) + (b.y * size_line) + 1] = (int)((log(i - color)) * 100) % 255;
-//		str[(b.x * 4) + (b.y * size_line) + 2] = (int)((log(i + color)) * 100) % 255;
-	}
-	else
-	{
-		str[b.x * 4 + b.y * size_line] = (char)130;
-		str[(b.x * 4) + (b.y * size_line) + 1] = (char)230;
-		str[(b.x * 4) + (b.y * size_line) + 2] = 30;
-	}
-
+	if (mlx->opt == MANDEL)
+		mandelbrot(mlx);
+	else if (mlx->opt == JULIA)
+		julia(mlx);
 }
-*/
+
 void	ft_usage(void)
 {
 	ft_fdprintf(1, "\nUsage: ./fractol <filename>\n");

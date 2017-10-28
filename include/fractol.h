@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 20:29:25 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/29 00:26:42 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "libft.h"
 # include "../minilibx_macos/mlx.h"
 
-# define MANDEL	0
-# define JULIA	1
+# define MANDEL	1
+# define JULIA	2
 
 # define XXX		1000
 # define YYY		1000
@@ -62,6 +62,7 @@ typedef struct		s_win
 
 typedef struct		s_mlx
 {
+	int				opt;
 	void			*mlx_ptr;
 	int				nbr;
 	t_win			win[2];
@@ -69,6 +70,8 @@ typedef struct		s_mlx
 }					t_mlx;
 
 void				ft_usage(void);
+
+void				draw_fractal(t_mlx *mlx);
 
 void				init_mandelbrot(t_mlx *mlx);
 void				mandelbrot(t_mlx *mlx);
