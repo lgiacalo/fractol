@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 20:28:30 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/28 23:03:05 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	put_pixel(t_mlx *mlx, t_coord b, int i)
 
 	if (i != mlx->win[0].iter_max)
 	{
-		str[b.x * 4 + b.y * size_line] = 0;
+		str[b.x * 4 + b.y * size_line] = (50 * i) % 255;
 		str[(b.x * 4) + (b.y * size_line) + 1] = 0;
 		str[(b.x * 4) + (b.y * size_line) + 2] = 0;
 	}

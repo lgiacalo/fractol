@@ -6,18 +6,21 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/17 20:37:29 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/28 23:07:24 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdio.h> // 
 
 int	my_mouse_julia_funct(int x, int y, t_mlx *mlx)
 {
-	if (x > 1 && x < 1000 && y > 1 && y < 1000)
+	if (x >= 1 && x <= 1000 && y >= 1 && y <= 1000)
 	{
-		mlx->win[0].c.x = x/ 10000;
-		mlx->win[0].c.y = y/ 10000;
+//		mlx->win[0].c.x = ((x - 750.0)/ 750.0);
+//		mlx->win[0].c.y = (y/ 1200.0);
+		mlx->win[0].c.x = ((x - 650.0)/ 650.0);
+		mlx->win[0].c.y = (y/ 1000.0);
 		julia(mlx);
 	}
 	return (0);
