@@ -6,23 +6,11 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/29 00:34:41 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/29 01:59:36 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h> // 
-
-int	my_mouse_julia_funct(int x, int y, t_mlx *mlx)
-{
-	if (mlx->opt == JULIA && x >= 1 && x <= 1000 && y >= 1 && y <= 1000)
-	{
-		mlx->win[0].c.x = (x / 650.0) - 1;
-		mlx->win[0].c.y = (y/ 1000.0);
-		julia(mlx);
-	}
-	return (0);
-}
 
 int	ft_init(t_mlx *mlx)
 {
@@ -69,10 +57,10 @@ int		main(int argc, char **argv)
 	t_mlx	mlx;
 
 	mlx.opt = 0;
+	mlx.color = 50;
 	if (argc < 2 || argc > 3 || !(mlx.opt = reading_choice(argv, argc)))
 		ft_usage();
 	init_fractal(&mlx);
-	mlx.color = 1;
 	ft_init(&mlx);
 	return (0);
 }

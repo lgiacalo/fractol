@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 05:24:22 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/28 23:06:24 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/29 01:58:02 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	init_julia(t_mlx *mlx)
 void	julia(t_mlx *mlx)
 {
 	double		tmp;
+	t_dcoord	z;
 	t_coord		b;
+	int			i;
 
 	b.x = -1;
 	while (++b.x < XXX)
@@ -37,15 +39,14 @@ void	julia(t_mlx *mlx)
 		b.y = -1;
 		while (++b.y < YYY)
 		{
-			double	z_r = (b.x - mlx->win[0].p.x) / mlx->win[0].zoom;
-			double	z_i = (b.y - mlx->win[0].p.y) / mlx->win[0].zoom;
-			int		i = 0;
-			while (((z_r * z_r) + (z_i * z_i)) < 4 && i < mlx->win[0].iter_max)
+			z.x = (b.x - mlx->win[0].p.x) / mlx->win[0].zoom;
+			z.y = (b.y - mlx->win[0].p.y) / mlx->win[0].zoom;
+			i = -1;
+			while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[0].iter_max)
 			{
-				tmp = z_r;
-				z_r = z_r * z_r - z_i * z_i + mlx->win[0].c.x;
-				z_i = 2 * z_i * tmp + mlx->win[0].c.y;
-				i++;
+				tmp = z.x;
+				z.x = z.x * z.x - z.y * z.y + mlx->win[0].c.x;
+				z.y = 2 * z.y * tmp + mlx->win[0].c.y;
 			}
 			put_pixel(mlx, b, i);
 		}

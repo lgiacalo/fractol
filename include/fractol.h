@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/29 00:46:11 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/29 01:51:17 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 
 # include "libft.h"
+# include "clavier.h"
 # include "../minilibx_macos/mlx.h"
 
 # define MANDEL	1
@@ -21,16 +22,6 @@
 
 # define XXX		1000
 # define YYY		1000
-
-# define KEY_ESC	53
-
-# define KEY_PLUS	69
-# define KEY_MOINS	78
-
-# define KEY_HAUT	126
-# define KEY_BAS	125
-# define KEY_DROITE	124
-# define KEY_GAUCHE	123
 
 typedef struct		s_coord
 {
@@ -81,6 +72,7 @@ void				julia(t_mlx *mlx);
 
 int					my_key_funct(int keycode, t_mlx *mlx);
 int					my_mouse_funct(int button, int x, int y, t_mlx *mlx);
+int					my_mouse_julia_funct(int x, int y, t_mlx *mlx);
 
 void				put_pixel(t_mlx *mlx, t_coord b, int i);
 

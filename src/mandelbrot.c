@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/29 00:44:39 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/10/29 01:59:34 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	init_mandelbrot(t_mlx *mlx)
 
 int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 {
-	int	k = 0;
-
+	int			k;;
 	double		tmp;
 	t_dcoord	z;
 	int			i;
@@ -34,6 +33,7 @@ int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 	i = -1;
 	z.x = 0;
 	z.y = 0;
+	k = 0;
 	while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[k].iter_max)
 	{
 		tmp = z.x;
@@ -45,13 +45,13 @@ int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 
 void	mandelbrot(t_mlx *mlx)
 {
-	int k = 0;
-
+	int			k;
 	int			i;
 	t_dcoord	c;
 	t_coord		b;
 
 	b.x = -1;
+	k = 0;
 	while (++b.x < XXX)
 	{
 		b.y = -1;
