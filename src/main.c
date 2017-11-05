@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/29 01:59:36 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/05 19:50:46 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int		reading_choice(char **argv, int argc)
 		opt += MANDEL;
 	else if(ft_strchr("Jj", *argv[1]) && ft_strequ("ulia", (argv[1] + 1)))
 		opt += JULIA;
+	else if(ft_strchr("Bb", *argv[1]) && ft_strequ("urning", (argv[1] + 1)))
+		opt += BURN; 
 	return (opt);
 }
 
@@ -50,6 +52,8 @@ void	init_fractal(t_mlx *mlx)
 		init_mandelbrot(mlx);
 	else if (mlx->opt == JULIA)
 		init_julia(mlx);
+	else if (mlx->opt == BURN)
+		init_burning(mlx);
 }
 
 int		main(int argc, char **argv)
@@ -60,6 +64,7 @@ int		main(int argc, char **argv)
 	mlx.color = 50;
 	if (argc < 2 || argc > 3 || !(mlx.opt = reading_choice(argv, argc)))
 		ft_usage();
+
 	init_fractal(&mlx);
 	ft_init(&mlx);
 	return (0);

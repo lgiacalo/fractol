@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/29 01:51:17 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/05 20:00:09 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define MANDEL	1
 # define JULIA	2
+# define BURN	4
 
 # define XXX		1000
 # define YYY		1000
@@ -48,6 +49,7 @@ typedef struct		s_win
 	t_coord			p;
 	double			zoom;
 	int				iter_max;
+	t_dcoord		z;
 	t_dcoord		c;
 }					t_win;
 
@@ -69,6 +71,9 @@ void				mandelbrot(t_mlx *mlx);
 
 void				init_julia(t_mlx *mlx);
 void				julia(t_mlx *mlx);
+
+void				init_burning(t_mlx *mlx);
+void				burning(t_mlx *mlx);
 
 int					my_key_funct(int keycode, t_mlx *mlx);
 int					my_mouse_funct(int button, int x, int y, t_mlx *mlx);

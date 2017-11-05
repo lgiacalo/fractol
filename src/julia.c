@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 05:24:22 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/29 01:58:02 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/05 19:55:06 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	init_julia(t_mlx *mlx)
 	win->p.y = YYY / 2;
 	win->zoom= 300;
 	win->iter_max = 120;
+	win->z.x = 0.0;
+	win->z.y = 0.0;
 	win->c.x = 0.0;
 	win->c.y = 0.5;
 }

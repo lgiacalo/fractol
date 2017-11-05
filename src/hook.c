@@ -6,11 +6,12 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/29 01:49:46 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/05 19:50:43 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdio.h>
 
 int	my_mouse_julia_funct(int x, int y, t_mlx *mlx)
 {
@@ -57,14 +58,14 @@ int		my_mouse_funct(int button, int x, int y, t_mlx *mlx)
 	if (button == 1 || button == 5)
 	{
 		win->zoom *= 1.2;
-		win->iter_max += 2;
+		win->iter_max += (mlx->opt == BURN) ? 1 : 2;
 		win->p.x -= (x - win->p.x) * 1.2 - (x - win->p.x);
 		win->p.y += (win->p.y - y) * 1.2 - (win->p.y - y);
 	}
 	else if (button == 2 || button == 4)
 	{
 		win->zoom /= 1.2;
-		win->iter_max -= 2;
+		win->iter_max -= (mlx->opt == BURN) ? 1 : 2;
 		win->p.x -= (x - win->p.x) / 1.2 - (x - win->p.x);
 		win->p.y += (win->p.y - y) / 1.2 - (win->p.y - y);
 	}

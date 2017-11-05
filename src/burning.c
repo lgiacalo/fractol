@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   burning.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/05 19:56:20 by lgiacalo         ###   ########.fr       */
+/*   Created: 2017/11/05 18:52:19 by lgiacalo          #+#    #+#             */
+/*   Updated: 2017/11/05 20:00:04 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
-void	init_mandelbrot(t_mlx *mlx)
+void	init_burning(t_mlx *mlx)
 {
 	t_win	*win;
 
 	win = &mlx->win[0];
-	win->p.x = 700;
-	win->p.y = 500;
-	win->zoom = 330;
-	win->iter_max = 60;
+	win->p.x = 666;
+	win->p.y = 583;
+	win->zoom = 275;
+	win->iter_max = 20;
 	win->z.x = 0.0;
 	win->z.y = 0.0;
 }
 
-int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
+double	ft_abs(double x)
+{
+	return ((x > 0) ? x : (x * -1.0));
+}
+
+int		burning_calcul(t_mlx *mlx, t_dcoord c)
 {
 	int			k;;
 	double		tmp;
@@ -37,14 +42,15 @@ int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 	k = 0;
 	while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[k].iter_max)
 	{
-		tmp = z.x;
-		z.x = z.x * z.x - z.y * z.y + c.x;
+		z.y = ft_abs(z.y);
+		tmp = ft_abs(z.x);
+		z.x = tmp * tmp - z.y * z.y + c.x;
 		z.y = 2 * z.y * tmp + c.y;
 	}
 	return (i);
 }
 
-void	mandelbrot(t_mlx *mlx)
+void	burning(t_mlx *mlx)
 {
 	int			k;
 	int			i;
@@ -58,9 +64,9 @@ void	mandelbrot(t_mlx *mlx)
 		b.y = -1;
 		while (++b.y < XXX)
 		{
-			c.x = (b.x - mlx->win[k].p.x) / (mlx->win[k].zoom);
-			c.y = (b.y - mlx->win[k].p.y) / (mlx->win[k].zoom);
-			i = mandelbrot_calcul(mlx, c);
+			c.x = ((b.x - mlx->win[k].p.x) / (mlx->win[k].zoom));
+			c.y = ((b.y - mlx->win[k].p.y) / (mlx->win[k].zoom));
+			i = burning_calcul(mlx, c);
 			put_pixel(mlx, b, i);
 		}
 	}

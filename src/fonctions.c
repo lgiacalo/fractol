@@ -6,12 +6,12 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/10/29 01:41:54 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/05 19:08:33 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <math.h>
+#include <math.h> //
 
 void	put_pixel(t_mlx *mlx, t_coord b, int i)
 {
@@ -41,6 +41,8 @@ void	draw_fractal(t_mlx *mlx)
 		mandelbrot(mlx);
 	else if (mlx->opt == JULIA)
 		julia(mlx);
+	else if (mlx->opt == BURN)
+		burning(mlx);
 }
 
 void	ft_usage(void)
