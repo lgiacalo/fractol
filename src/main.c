@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 01:04:22 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/06 02:45:35 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int		reading_choice(char **argv, int argc)
 		opt += BURN; 
 	else if(ft_strchr("Bb", *argv[1]) && ft_strequ("urning3", (argv[1] + 1)))
 		opt += BURN3;
+	else if(ft_strchr("Tt", *argv[1]) && ft_strequ("est", (argv[1] + 1)))
+		opt += TEST;
 	return (opt);
 }
 
@@ -66,6 +68,8 @@ void	init_fractal(t_mlx *mlx)
 		init_burning(mlx);
 	else if (mlx->opt == BURN3)
 		init_burning3(mlx);
+	else if (mlx->opt == TEST)
+		init_test(mlx);
 }
 
 int		main(int argc, char **argv)

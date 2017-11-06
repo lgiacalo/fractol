@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 01:04:43 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/06 02:45:57 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	draw_fractal(t_mlx *mlx)
 		burning(mlx);
 	else if (mlx->opt == BURN3)
 		burning3(mlx);
+	else if (mlx->opt == TEST)
+		test(mlx);
 }
 
 double	ft_abs(double x)

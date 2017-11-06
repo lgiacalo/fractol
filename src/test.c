@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 02:44:11 by lgiacalo         ###   ########.fr       */
+/*   Created: 2017/11/06 02:46:38 by lgiacalo          #+#    #+#             */
+/*   Updated: 2017/11/06 03:04:00 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_mandelbrot(t_mlx *mlx)
+// ESSAI DE FRACTALES DIFFERENTES
+
+void	init_test(t_mlx *mlx)
 {
 	t_win	*win;
 
@@ -25,7 +27,7 @@ void	init_mandelbrot(t_mlx *mlx)
 	win->z.y = 0.0;
 }
 
-int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
+int		test_calcul(t_mlx *mlx, t_dcoord c)
 {
 	int			k;;
 	double		tmp;
@@ -44,7 +46,7 @@ int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 	return (i);
 }
 
-void	mandelbrot(t_mlx *mlx)
+void	test(t_mlx *mlx)
 {
 	int			k;
 	int			i;
@@ -60,7 +62,7 @@ void	mandelbrot(t_mlx *mlx)
 		{
 			c.x = (b.x - mlx->win[k].p.x) / (mlx->win[k].zoom);
 			c.y = (b.y - mlx->win[k].p.y) / (mlx->win[k].zoom);
-			i = mandelbrot_calcul(mlx, c);
+			i = test_calcul(mlx, c);
 			put_pixel(mlx, b, i);
 		}
 	}

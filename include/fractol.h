@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 01:07:31 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/06 02:46:29 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define JULIA4	(1 << 3)
 # define BURN	(1 << 4)
 # define BURN3	(1 << 5)
+# define TEST	(1 << 6)
 
 # define XXX		1000
 # define YYY		1000
@@ -87,6 +88,9 @@ void				burning(t_mlx *mlx);
 
 void				init_burning3(t_mlx *mlx);
 void				burning3(t_mlx *mlx);
+
+void				init_test(t_mlx *mlx);
+void				test(t_mlx *mlx);
 
 int					my_key_funct(int keycode, t_mlx *mlx);
 int					my_mouse_funct(int button, int x, int y, t_mlx *mlx);
