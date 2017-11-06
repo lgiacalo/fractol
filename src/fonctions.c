@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 02:45:57 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/06 22:25:08 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,73 @@ void	draw_fractal(t_mlx *mlx)
 double	ft_abs(double x)
 {
 	return ((x > 0) ? x : (x * -1.0));
+}
+
+long int	ft_factoriel(int nb)
+{
+	long int	resultat;
+	int			i;
+
+	if (nb == 0)
+		return (0);
+	i = 0;
+	resultat = 1;
+	while (++i <= nb)
+		resultat *= i;
+	return (resultat);
+}
+
+double	ft_dpower(double nb, int power)
+{
+	double resultat;
+
+	resultat = 1;
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	resultat = ft_dpower(nb, power - 1) * nb;
+	return (resultat);
+}
+
+int		ft_triangle_pascal(int k, int n)
+{
+	int	resultat;
+
+	resultat = ((ft_factoriel(k)) * (ft_factoriel(n - k)));
+	if (resultat == 0)
+		return (1);
+	resultat = ft_factoriel(n) / resultat;
+	return (resultat);
+}
+
+void	ft_complex_power(t_dcoord *z, t_dcoord c, int power)
+{
+	int		kr;
+	int		ki;
+	double	tmp;
+
+	kr = 2;
+	tmp = z->x;
+	z->x = ft_dpower(tmp, power);
+	while (kr <= power)
+	{
+		if (kr % 4)
+			z->x +=  1.00 * (ft_triangle_pascal(kr, power) * (ft_dpower(tmp, (power - kr))) * (ft_dpower(z->y, kr)));
+		else
+			z->x -= 1.00 * (ft_triangle_pascal(kr, power) * (ft_dpower(tmp, (power - kr))) * (ft_dpower(z->y, kr)));
+		kr += 2;
+	}
+	z->x += c.x;
+	ki = 1;
+	while (ki <= power)
+	{
+		if (kr % 6)
+			z->y -= ft_triangle_pascal(ki, power) * ft_dpower(tmp, (power - ki)) * ft_dpower(z->y, ki);
+		else
+			z->y += ft_triangle_pascal(ki, power) * ft_dpower(tmp, (power - ki)) * ft_dpower(z->y, ki);
+		ki += 2;
+	}
 }
 
 void	ft_usage(void)

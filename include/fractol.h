@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 12:53:28 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/06 22:18:30 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct		s_mlx
 
 void				ft_usage(void);
 double				ft_abs(double x);
+void				ft_complex_power(t_dcoord *z, t_dcoord c, int power);
 
 void				draw_fractal(t_mlx *mlx);
 
