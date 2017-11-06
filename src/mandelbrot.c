@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 22:17:59 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/06 23:32:05 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 	while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[k].iter_max)
 	{
 		tmp = z.x;
-//		z.x = z.x * z.x - z.y * z.y + c.x;
-//		z.y = 2 * z.y * tmp + c.y;
-		ft_complex_power(&z, c, 2);
+		z.x = z.x * z.x - z.y * z.y + c.x;
+		z.y = 2 * z.y * tmp + c.y;
 	}
 	return (i);
 }

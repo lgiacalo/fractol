@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 02:45:35 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 00:09:27 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,10 @@ int		main(int argc, char **argv)
 
 	mlx.opt = 0;
 	mlx.color = 50;
+	mlx.abs = KEY_S;
+	mlx.power = 2;
 	if (argc < 2 || argc > 3 || !(mlx.opt = reading_choice(argv, argc)))
 		ft_usage();
-
 	init_fractal(&mlx);
 	ft_init(&mlx);
 	return (0);

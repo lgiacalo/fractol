@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:24:45 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 02:20:15 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 00:13:06 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	julia3(t_mlx *mlx)
 			i = -1;
 			while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[0].iter_max)
 			{
+				if (mlx->abs == KEY_A)
+					ft_abs_dcoord(&z);
 				tmp = z.x;
 				z.x = (tmp * tmp * tmp) - (3 * tmp * z.y * z.y) + mlx->win[0].c.x;
 				z.y = (3 * tmp * tmp * z.y) - (z.y * z.y * z.y) + mlx->win[0].c.y;

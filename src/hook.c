@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 02:44:13 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 00:14:46 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,16 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 		mlx->win[0].p.x -= 50;
 	else if (keycode == KEY_DROITE)
 		mlx->win[0].p.x += 50;
+	else if (keycode == KEY_A) // que sur certaines fractales
+		mlx->abs = KEY_A;
+	else if (keycode == KEY_S)
+		mlx->abs = KEY_S;
+	else if (keycode == KEY_N2)
+		mlx->power = 2;
+	else if (keycode == KEY_N3)
+		mlx->power = 3;
+	else if (keycode == KEY_N4)
+		mlx->power = 4;
 	draw_fractal(mlx);
 	return (0);
 }
