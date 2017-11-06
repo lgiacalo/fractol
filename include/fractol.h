@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/05 20:00:09 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/06 01:07:31 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@
 # include "clavier.h"
 # include "../minilibx_macos/mlx.h"
 
-# define MANDEL	1
-# define JULIA	2
-# define BURN	4
+# define MANDEL	(1 << 0)
+# define JULIA	(1 << 1)
+# define JULIA3	(1 << 2)
+# define JULIA4	(1 << 3)
+# define BURN	(1 << 4)
+# define BURN3	(1 << 5)
 
 # define XXX		1000
 # define YYY		1000
@@ -63,6 +66,7 @@ typedef struct		s_mlx
 }					t_mlx;
 
 void				ft_usage(void);
+double				ft_abs(double x);
 
 void				draw_fractal(t_mlx *mlx);
 
@@ -72,8 +76,17 @@ void				mandelbrot(t_mlx *mlx);
 void				init_julia(t_mlx *mlx);
 void				julia(t_mlx *mlx);
 
+void				init_julia3(t_mlx *mlx);
+void				julia3(t_mlx *mlx);
+
+void				init_julia4(t_mlx *mlx);
+void				julia4(t_mlx *mlx);
+
 void				init_burning(t_mlx *mlx);
 void				burning(t_mlx *mlx);
+
+void				init_burning3(t_mlx *mlx);
+void				burning3(t_mlx *mlx);
 
 int					my_key_funct(int keycode, t_mlx *mlx);
 int					my_mouse_funct(int button, int x, int y, t_mlx *mlx);

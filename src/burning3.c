@@ -1,54 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   burning3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/17 05:24:22 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 00:25:28 by lgiacalo         ###   ########.fr       */
+/*   Created: 2017/11/06 00:09:38 by lgiacalo          #+#    #+#             */
+/*   Updated: 2017/11/06 00:19:04 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_julia(t_mlx *mlx)
+void	init_burning3(t_mlx *mlx)
 {
 	t_win	*win;
 
 	win = &mlx->win[0];
-	win->p.x = XXX / 2;
-	win->p.y = YYY / 2;
-	win->zoom= 300;
-	win->iter_max = 120;
+	win->p.x = 681;
+	win->p.y = 390;
+	win->zoom = 275;
+	win->iter_max = 60;
 	win->z.x = 0.0;
 	win->z.y = 0.0;
-	win->c.x = 0.0;
-	win->c.y = 0.5;
 }
 
-void	julia(t_mlx *mlx)
+int		burning3_calcul(t_mlx *mlx, t_dcoord c)
 {
+	int			k;;
 	double		tmp;
 	t_dcoord	z;
-	t_coord		b;
 	int			i;
 
+	i = -1;
+	z = mlx->win[0].z;
+	k = 0;
+	while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[k].iter_max)
+	{
+		z.y = ft_abs(z.y);
+		tmp = ft_abs(z.x);
+		z.x = (tmp * tmp * tmp) - (3 * tmp * z.y * z.y) + c.x;
+		z.y = (3 * tmp * tmp * z.y) - (z.y * z.y * z.y) + c.y;
+	}
+	return (i);
+}
+
+void	burning3(t_mlx *mlx)
+{
+	int			k;
+	int			i;
+	t_dcoord	c;
+	t_coord		b;
+
 	b.x = -1;
+	k = 0;
 	while (++b.x < XXX)
 	{
 		b.y = -1;
-		while (++b.y < YYY)
+		while (++b.y < XXX)
 		{
-			z.x = (b.x - mlx->win[0].p.x) / mlx->win[0].zoom;
-			z.y = (b.y - mlx->win[0].p.y) / mlx->win[0].zoom;
-			i = -1;
-			while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[0].iter_max)
-			{
-				tmp = z.x;
-				z.x = z.x * z.x - z.y * z.y + mlx->win[0].c.x;
-				z.y = 2 * z.y * tmp + mlx->win[0].c.y;
-			}
+			c.x = ((b.x - mlx->win[k].p.x) / (mlx->win[k].zoom));
+			c.y = ((b.y - mlx->win[k].p.y) / (mlx->win[k].zoom));
+			i = burning3_calcul(mlx, c);
 			put_pixel(mlx, b, i);
 		}
 	}

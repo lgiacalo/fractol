@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   julia4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/17 05:24:22 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 00:25:28 by lgiacalo         ###   ########.fr       */
+/*   Created: 2017/11/06 01:02:35 by lgiacalo          #+#    #+#             */
+/*   Updated: 2017/11/06 01:31:28 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_julia(t_mlx *mlx)
-{
+void	init_julia4(t_mlx *mlx)
+	{
 	t_win	*win;
 
 	win = &mlx->win[0];
@@ -23,11 +23,13 @@ void	init_julia(t_mlx *mlx)
 	win->iter_max = 120;
 	win->z.x = 0.0;
 	win->z.y = 0.0;
-	win->c.x = 0.0;
-	win->c.y = 0.5;
+//	win->c.x = -0.375556;
+//	win->c.y = 0.14;
+	win->c.x = 0.56;
+	win->c.y = 0.68;
 }
 
-void	julia(t_mlx *mlx)
+void	julia4(t_mlx *mlx)
 {
 	double		tmp;
 	t_dcoord	z;
@@ -45,9 +47,19 @@ void	julia(t_mlx *mlx)
 			i = -1;
 			while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[0].iter_max)
 			{
+//				tmp = z.x;
+				z.x = ft_abs(z.x);
+				z.y = ft_abs(z.y);
 				tmp = z.x;
-				z.x = z.x * z.x - z.y * z.y + mlx->win[0].c.x;
-				z.y = 2 * z.y * tmp + mlx->win[0].c.y;
+// PUISSANCE 3
+//				z.x = (tmp * tmp * tmp) - (3 * tmp * z.y * z.y) + mlx->win[0].c.x;
+//				z.y = (3 * tmp * tmp * z.y) - (z.y * z.y * z.y) + mlx->win[0].c.y;
+// PUISSANCE 4				
+//				z.x = (tmp * tmp * tmp * tmp) - (6 * tmp * tmp * z.y * z.y) + (z.y * z.y * z.y * z.y) + mlx->win[0].c.x;
+//				z.y = (4 * tmp * tmp * tmp * z.y) - (4 * tmp * z.y * z.y * z.y) + mlx->win[0].c.y;
+// PUISSANCE 2
+//				z.x = z.x * z.x - z.y * z.y + mlx->win[0].c.x;
+//				z.y = 2 * z.y * tmp + mlx->win[0].c.y;
 			}
 			put_pixel(mlx, b, i);
 		}

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 18:52:19 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/05 20:00:04 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/06 00:11:22 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ void	init_burning(t_mlx *mlx)
 	win->iter_max = 20;
 	win->z.x = 0.0;
 	win->z.y = 0.0;
-}
-
-double	ft_abs(double x)
-{
-	return ((x > 0) ? x : (x * -1.0));
 }
 
 int		burning_calcul(t_mlx *mlx, t_dcoord c)

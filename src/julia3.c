@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   julia3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/17 05:24:22 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 00:25:28 by lgiacalo         ###   ########.fr       */
+/*   Created: 2017/11/06 00:24:45 by lgiacalo          #+#    #+#             */
+/*   Updated: 2017/11/06 01:01:39 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_julia(t_mlx *mlx)
+void	init_julia3(t_mlx *mlx)
 {
 	t_win	*win;
 
 	win = &mlx->win[0];
 	win->p.x = XXX / 2;
 	win->p.y = YYY / 2;
-	win->zoom= 300;
+	win->zoom= 250;
 	win->iter_max = 120;
 	win->z.x = 0.0;
 	win->z.y = 0.0;
-	win->c.x = 0.0;
-	win->c.y = 0.5;
+	win->c.x = -0.026667;
+	win->c.y = 0.772000;
 }
 
-void	julia(t_mlx *mlx)
+void	julia3(t_mlx *mlx)
 {
 	double		tmp;
 	t_dcoord	z;
@@ -46,8 +46,8 @@ void	julia(t_mlx *mlx)
 			while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[0].iter_max)
 			{
 				tmp = z.x;
-				z.x = z.x * z.x - z.y * z.y + mlx->win[0].c.x;
-				z.y = 2 * z.y * tmp + mlx->win[0].c.y;
+				z.x = (tmp * tmp * tmp) - (3 * tmp * z.y * z.y) + mlx->win[0].c.x;
+				z.y = (3 * tmp * tmp * z.y) - (z.y * z.y * z.y) + mlx->win[0].c.y;
 			}
 			put_pixel(mlx, b, i);
 		}

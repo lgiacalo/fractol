@@ -41,7 +41,10 @@ SRC_NAME	=	main.c\
 				fonctions.c\
 				mandelbrot.c\
 				julia.c\
+				julia3.c\
+				julia4.c\
 				burning.c\
+				burning3.c\
 				hook.c
 
 INC_NAME	=	fractol.h
