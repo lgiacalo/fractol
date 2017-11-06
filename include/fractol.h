@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 02:46:29 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/06 12:53:28 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,25 @@ typedef struct		s_dcoord
 typedef struct		s_win
 {
 	int				fractol;
-	void			*win_ptr;
-	void			*img_ptr;
-	t_coord			img_len;
 	int				bits_per_pixel;
 	int				size_line;
 	int				endian;
+	void			*win_ptr;
+	void			*img_ptr;
+	double			zoom;
+	t_coord			img_len;
 	char			*img_str;
 	t_coord			p;
-	double			zoom;
-	int				iter_max;
 	t_dcoord		z;
 	t_dcoord		c;
+	int				iter_max;
 }					t_win;
 
 typedef struct		s_mlx
 {
 	int				opt;
-	void			*mlx_ptr;
 	int				nbr;
+	void			*mlx_ptr;
 	t_win			win[2];
 	int				color;
 }					t_mlx;

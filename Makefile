@@ -18,7 +18,7 @@ NAME		= fractol
 
 
 CC			= gcc  
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror #-Wpadded
 CPPFLAGS	= -Iinclude -Ilibft/include
 OPT			=
 
