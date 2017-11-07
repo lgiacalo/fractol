@@ -6,14 +6,14 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/07 01:31:48 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 01:59:45 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <stdio.h>
 
-int	my_mouse_julia_funct(int x, int y, t_mlx *mlx)
+int		my_mouse_julia_funct(int x, int y, t_mlx *mlx)
 {
 	if (mlx->opt == JULIA && x >= 1 && x <= 1000 && y >= 1 && y <= 1000)
 	{
@@ -22,6 +22,22 @@ int	my_mouse_julia_funct(int x, int y, t_mlx *mlx)
 		julia(mlx);
 	}
 	return (0);
+}
+
+void	ft_option_equation(int keycode, t_mlx *mlx)
+{
+	if (keycode == KEY_A)
+		mlx->abs = KEY_A;
+	else if (keycode == KEY_S)
+		mlx->abs = KEY_S;
+	else if (keycode == KEY_N2)
+		mlx->power = 2;
+	else if (keycode == KEY_N3)
+		mlx->power = 3;
+	else if (keycode == KEY_N4)
+		mlx->power = 4;
+	else if (keycode == KEY_N5)
+		mlx->power = 5;
 }
 
 int		my_key_funct(int keycode, t_mlx *mlx)
@@ -52,18 +68,7 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 		mlx->win[0].p.x -= 50;
 	else if (keycode == KEY_DROITE)
 		mlx->win[0].p.x += 50;
-	else if (keycode == KEY_A) // que sur certaines fractales
-		mlx->abs = KEY_A;
-	else if (keycode == KEY_S)
-		mlx->abs = KEY_S;
-	else if (keycode == KEY_N2)
-		mlx->power = 2;
-	else if (keycode == KEY_N3)
-		mlx->power = 3;
-	else if (keycode == KEY_N4)
-		mlx->power = 4;
-	else if (keycode == KEY_N5)
-		mlx->power = 5;
+	ft_option_equation(keycode, mlx);
 	draw_fractal(mlx);
 	return (0);
 }

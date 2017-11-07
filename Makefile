@@ -64,18 +64,16 @@ MINI	=  minilibx_macos/libmlx.a
 FRAME	= -lmlx -framework OpenGL -framework AppKit
 
 ################################################################################
-OPT = 
 
-DEBUG = no
-ALLOC = no
-ifeq ($(DEBUG), yes)
-	OPT = -g
-else ifeq ($(ALLOC), yes)
-	OPT = -g -fsanitize=address
-else
-	OPT = 
+OPT =
+
+ifeq ($(DEBUG), info)
+	OPT += -g
 endif
-
+ifeq ($(DEBUG), alloc)
+	OPT += -g -fsanitize=address
+endif
+	
 export OPT
 
 ################################################################################

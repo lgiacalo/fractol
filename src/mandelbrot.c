@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 23:32:05 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 02:08:39 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	init_mandelbrot(t_mlx *mlx)
 int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 {
 	int			k;;
-	double		tmp;
 	t_dcoord	z;
 	int			i;
 
@@ -36,11 +35,7 @@ int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 	z = mlx->win[0].z;
 	k = 0;
 	while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[k].iter_max)
-	{
-		tmp = z.x;
-		z.x = z.x * z.x - z.y * z.y + c.x;
-		z.y = 2 * z.y * tmp + c.y;
-	}
+		ft_mandelbrot_power(&z, c, mlx->power);
 	return (i);
 }
 
@@ -61,8 +56,36 @@ void	mandelbrot(t_mlx *mlx)
 			c.x = (b.x - mlx->win[k].p.x) / (mlx->win[k].zoom);
 			c.y = (b.y - mlx->win[k].p.y) / (mlx->win[k].zoom);
 			i = mandelbrot_calcul(mlx, c);
-			put_pixel(mlx, b, i);
+			if (i != mlx->win[k].iter_max)
+				put_pixel(mlx, b, i);
 		}
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr, mlx->win[0].img_ptr, 0, 0);
+}
+
+void	ft_mandelbrot_power(t_dcoord *z, t_dcoord c, int power)
+{
+	double	t;
+
+	t = z->x;
+	if (power == 2 || power == 3)
+	{
+		z->x = (power == 2) ? t * t - z->y * z->y + c.x\
+			   : (t * t * t) - (3 * t * z->y * z->y) + c.x;
+		z->y = (power == 2) ? 2 * z->y * t + c.y\
+			   : (3 * t * t * z->y) - (z->y * z->y * z->y) + c.y;
+	}
+	else if (power == 4)
+	{
+		z->x = (t * t * t * t) - (6 * t * t * z->y * z->y)\
+			   + (z->y * z->y * z->y * z->y) + c.x;
+		z->y = (4 * t * t * t * z->y) - (4 * t * z->y * z->y * z->y) + c.y;
+	}
+	else if (power == 5)
+	{
+		z->x = (t * t * t * t * t) - (10 * t * t * t * z->y * z->y)\
+			   + (5 * t * z->y * z->y * z->y * z->y) + c.x;
+		z->y = (5 * t * t * t * t * z->y) - (10 * t * t * z->y * z->y * z->y)\
+			   + (z->y * z->y * z->y * z->y * z->y) + c.y;
+	}
 }
