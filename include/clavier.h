@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/29 01:50:04 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/07 00:04:18 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 01:09:25 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 # define KEY_ESC	53
 
-# define KEY_N0		83
-# define KEY_N1		84
-# define KEY_N2		85
-# define KEY_N3		86
-# define KEY_N4		87
-# define KEY_N5		88
-# define KEY_N6		89
-# define KEY_N7		90
+# define KEY_N0		82
+# define KEY_N1		83
+# define KEY_N2		84
+# define KEY_N3		85
+# define KEY_N4		86
+# define KEY_N5		87
+# define KEY_N6		88
+# define KEY_N7		89
 # define KEY_N8		91
 # define KEY_N9		92
 

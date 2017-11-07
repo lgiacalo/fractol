@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/07 00:14:46 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 01:31:48 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,6 @@ int	my_mouse_julia_funct(int x, int y, t_mlx *mlx)
 		mlx->win[0].c.x = (x / 550.0) - 1;
 		mlx->win[0].c.y = (y/ 1000.0);
 		julia(mlx);
-	}
-	else if (mlx->opt == JULIA3 && x >= 1 && x <= 1000 && y >= 1 && y <= 1000)
-	{
-		mlx->win[0].c.x = (x / 450.0) - 1;
-		mlx->win[0].c.y = (y/ 1000.0);
-		julia3(mlx);
-	}
-	else if (mlx->opt == JULIA4 && x >= 1 && x <= 1000 && y >= 1 && y <= 1000)
-	{
-		mlx->win[0].c.x = (x / 450.0) - 1;
-		mlx->win[0].c.y = (y/ 1000.0);
-		julia4(mlx);
 	}
 	return (0);
 }
@@ -74,6 +62,8 @@ int		my_key_funct(int keycode, t_mlx *mlx)
 		mlx->power = 3;
 	else if (keycode == KEY_N4)
 		mlx->power = 4;
+	else if (keycode == KEY_N5)
+		mlx->power = 5;
 	draw_fractal(mlx);
 	return (0);
 }

@@ -41,14 +41,11 @@ SRC_NAME	=	main.c\
 				fonctions.c\
 				mandelbrot.c\
 				julia.c\
-				julia3.c\
-				julia4.c\
 				burning.c\
-				burning3.c\
 				test.c\
 				hook.c
 
-INC_NAME	=	fractol.h
+INC_NAME	=	fractol.h clavier.h
 
 OBJ_NAME	=	$(SRC_NAME:.c=.o)
 

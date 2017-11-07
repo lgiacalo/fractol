@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 18:52:19 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 22:17:05 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 01:45:14 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	init_burning(t_mlx *mlx)
 	t_win	*win;
 
 	win = &mlx->win[0];
-	win->p.x = 666;
-	win->p.y = 583;
+	win->p.x = 566;
+	win->p.y = 483;
 	win->zoom = 275;
-	win->iter_max = 20;
+	win->iter_max = 40;
 	win->z.x = 0.0;
 	win->z.y = 0.0;
 }
@@ -28,7 +28,6 @@ void	init_burning(t_mlx *mlx)
 int		burning_calcul(t_mlx *mlx, t_dcoord c)
 {
 	int			k;;
-	double		tmp;
 	t_dcoord	z;
 	int			i;
 
@@ -37,10 +36,8 @@ int		burning_calcul(t_mlx *mlx, t_dcoord c)
 	k = 0;
 	while (((z.x * z.x) + (z.y * z.y)) < 4 && ++i < mlx->win[k].iter_max)
 	{
-		z.y = ft_abs(z.y);
-		tmp = ft_abs(z.x);
-		z.x = tmp * tmp - z.y * z.y + c.x;
-		z.y = 2 * z.y * tmp + c.y;
+		ft_abs_dcoord(&z);
+		ft_mandelbrot_power(&z, c, mlx->power);
 	}
 	return (i);
 }

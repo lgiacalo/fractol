@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/06 23:56:56 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 01:43:47 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,8 @@ void	draw_fractal(t_mlx *mlx)
 		mandelbrot(mlx);
 	else if (mlx->opt == JULIA)
 		julia(mlx);
-	else if (mlx->opt == JULIA3)
-		julia3(mlx);
-	else if (mlx->opt == JULIA4)
-		julia4(mlx);
 	else if (mlx->opt == BURN)
 		burning(mlx);
-	else if (mlx->opt == BURN3)
-		burning3(mlx);
 	else if (mlx->opt == TEST)
 		test(mlx);
 }

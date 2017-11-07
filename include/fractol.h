@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/07 00:05:21 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 01:45:54 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@
 
 # define MANDEL	(1 << 0)
 # define JULIA	(1 << 1)
-# define JULIA3	(1 << 2)
-# define JULIA4	(1 << 3)
-# define BURN	(1 << 4)
-# define BURN3	(1 << 5)
-# define TEST	(1 << 6)
+# define BURN	(1 << 2)
+# define TEST	(1 << 3)
 
 # define XXX		1000
 # define YYY		1000
@@ -73,6 +70,7 @@ double				ft_abs(double x);
 void				ft_abs_dcoord(t_dcoord *z);
 
 void				draw_fractal(t_mlx *mlx);
+void				ft_mandelbrot_power(t_dcoord *z, t_dcoord c, int power);
 
 void				init_mandelbrot(t_mlx *mlx);
 void				mandelbrot(t_mlx *mlx);
@@ -80,17 +78,8 @@ void				mandelbrot(t_mlx *mlx);
 void				init_julia(t_mlx *mlx);
 void				julia(t_mlx *mlx);
 
-void				init_julia3(t_mlx *mlx);
-void				julia3(t_mlx *mlx);
-
-void				init_julia4(t_mlx *mlx);
-void				julia4(t_mlx *mlx);
-
 void				init_burning(t_mlx *mlx);
 void				burning(t_mlx *mlx);
-
-void				init_burning3(t_mlx *mlx);
-void				burning3(t_mlx *mlx);
 
 void				init_test(t_mlx *mlx);
 void				test(t_mlx *mlx);

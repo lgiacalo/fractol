@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/07 00:09:27 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/07 01:43:38 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,8 @@ int		reading_choice(char **argv, int argc)
 		opt += MANDEL;
 	else if(ft_strchr("Jj", *argv[1]) && ft_strequ("ulia", (argv[1] + 1)))
 		opt += JULIA;
-	else if(ft_strchr("Jj", *argv[1]) && ft_strequ("ulia3", (argv[1] + 1)))
-		opt += JULIA3;
-	else if(ft_strchr("Jj", *argv[1]) && ft_strequ("ulia4", (argv[1] + 1)))
-		opt += JULIA4;
 	else if(ft_strchr("Bb", *argv[1]) && ft_strequ("urning", (argv[1] + 1)))
 		opt += BURN; 
-	else if(ft_strchr("Bb", *argv[1]) && ft_strequ("urning3", (argv[1] + 1)))
-		opt += BURN3;
 	else if(ft_strchr("Tt", *argv[1]) && ft_strequ("est", (argv[1] + 1)))
 		opt += TEST;
 	return (opt);
@@ -60,14 +54,8 @@ void	init_fractal(t_mlx *mlx)
 		init_mandelbrot(mlx);
 	else if (mlx->opt == JULIA)
 		init_julia(mlx);
-	else if (mlx->opt == JULIA3)
-		init_julia3(mlx);
-	else if (mlx->opt == JULIA4)
-		init_julia4(mlx);
 	else if (mlx->opt == BURN)
 		init_burning(mlx);
-	else if (mlx->opt == BURN3)
-		init_burning3(mlx);
 	else if (mlx->opt == TEST)
 		init_test(mlx);
 }
