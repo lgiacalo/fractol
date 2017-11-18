@@ -38,11 +38,11 @@ INC_PATH	=	include
 OBJ_PATH	=	obj
 
 SRC_NAME	=	main.c\
+				usage.c\
 				fonctions.c\
 				mandelbrot.c\
 				julia.c\
 				burning.c\
-				test.c\
 				hook.c
 
 INC_NAME	=	fractol.h clavier.h

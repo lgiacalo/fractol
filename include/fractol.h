@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/07 01:55:55 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 20:32:02 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct		s_mlx
 }					t_mlx;
 
 void				ft_usage(void);
+void				ft_usage_clavier(void);
 double				ft_abs(double x);
 void				ft_abs_dcoord(t_dcoord *z);
 
@@ -78,9 +79,6 @@ void				init_burning(t_mlx *mlx);
 void				mandelbrot(t_mlx *mlx);
 void				julia(t_mlx *mlx);
 void				burning(t_mlx *mlx);
-
-void				init_test(t_mlx *mlx);
-void				test(t_mlx *mlx);
 
 int					my_key_funct(int keycode, t_mlx *mlx);
 int					my_mouse_funct(int button, int x, int y, t_mlx *mlx);

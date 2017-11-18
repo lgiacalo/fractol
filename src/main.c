@@ -6,22 +6,24 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/07 01:43:38 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 20:31:40 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	ft_init(t_mlx *mlx)
+int		ft_init(t_mlx *mlx)
 {
 	if (!(mlx->mlx_ptr = mlx_init(0)))
 		return (EXIT_FAILURE);
-	if (!(mlx->win[0].win_ptr = mlx_new_window(mlx->mlx_ptr, XXX, YYY, "Fractol")))
+	if (!(mlx->win[0].win_ptr = mlx_new_window(mlx->mlx_ptr,
+			XXX, YYY, "Fractol")))
 		return (EXIT_FAILURE);
 	if (!(mlx->win[0].img_ptr = mlx_new_image(mlx->mlx_ptr, YYY, YYY)))
 		return (EXIT_FAILURE);
-	if (!(mlx->win[0].img_str = mlx_get_data_addr(mlx->win[0].img_ptr, &(mlx->win[0].bits_per_pixel),
-					&(mlx->win[0].size_line), &(mlx->win[0].endian))))
+	if (!(mlx->win[0].img_str = mlx_get_data_addr(mlx->win[0].img_ptr,
+			&(mlx->win[0].bits_per_pixel), &(mlx->win[0].size_line),
+			&(mlx->win[0].endian))))
 		return (EXIT_FAILURE);
 	draw_fractal(mlx);
 	mlx_key_hook(mlx->win[0].win_ptr, &my_key_funct, mlx);
@@ -39,12 +41,10 @@ int		reading_choice(char **argv, int argc)
 	opt = 0;
 	if (ft_strchr("Mm", *argv[1]) && ft_strequ("andelbrot", (argv[1] + 1)))
 		opt += MANDEL;
-	else if(ft_strchr("Jj", *argv[1]) && ft_strequ("ulia", (argv[1] + 1)))
+	else if (ft_strchr("Jj", *argv[1]) && ft_strequ("ulia", (argv[1] + 1)))
 		opt += JULIA;
-	else if(ft_strchr("Bb", *argv[1]) && ft_strequ("urning", (argv[1] + 1)))
-		opt += BURN; 
-	else if(ft_strchr("Tt", *argv[1]) && ft_strequ("est", (argv[1] + 1)))
-		opt += TEST;
+	else if (ft_strchr("Bb", *argv[1]) && ft_strequ("urning", (argv[1] + 1)))
+		opt += BURN;
 	return (opt);
 }
 
@@ -56,8 +56,6 @@ void	init_fractal(t_mlx *mlx)
 		init_julia(mlx);
 	else if (mlx->opt == BURN)
 		init_burning(mlx);
-	else if (mlx->opt == TEST)
-		init_test(mlx);
 }
 
 int		main(int argc, char **argv)
@@ -70,6 +68,7 @@ int		main(int argc, char **argv)
 	mlx.power = 2;
 	if (argc < 2 || argc > 3 || !(mlx.opt = reading_choice(argv, argc)))
 		ft_usage();
+	ft_usage_clavier();
 	init_fractal(&mlx);
 	ft_init(&mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 18:52:19 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/07 01:45:14 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 20:31:02 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_burning(t_mlx *mlx)
 
 int		burning_calcul(t_mlx *mlx, t_dcoord c)
 {
-	int			k;;
+	int			k;
 	t_dcoord	z;
 	int			i;
 
@@ -62,5 +62,6 @@ void	burning(t_mlx *mlx)
 			put_pixel(mlx, b, i);
 		}
 	}
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr, mlx->win[0].img_ptr, 0, 0);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr,
+			mlx->win[0].img_ptr, 0, 0);
 }

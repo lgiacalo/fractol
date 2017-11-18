@@ -4,3 +4,5 @@
 - Touche 1, 2, 3 pour changer de fractales
 - Detruire image si existe deja (destroy...)
 - Utilisation des threads
+
+- Regler le probleme de norminette

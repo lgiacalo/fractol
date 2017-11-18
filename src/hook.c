@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/07 01:59:45 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 20:35:30 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		my_mouse_julia_funct(int x, int y, t_mlx *mlx)
 	if (mlx->opt == JULIA && x >= 1 && x <= 1000 && y >= 1 && y <= 1000)
 	{
 		mlx->win[0].c.x = (x / 550.0) - 1;
-		mlx->win[0].c.y = (y/ 1000.0);
+		mlx->win[0].c.y = (y / 1000.0);
 		julia(mlx);
 	}
 	return (0);
@@ -40,16 +40,21 @@ void	ft_option_equation(int keycode, t_mlx *mlx)
 		mlx->power = 5;
 }
 
+/*
+**	{
+**		t_win win;
+**		win = mlx->win[0];
+**		printf("Val : p.x = [%d] / p.y = [%d]\nZoom = [%f]\nIter_max = [%d]\n",
+**			win.p.x, win.p.y, win.zoom, win.iter_max);
+**		printf("Julia(s) : c.x = [%f] / c.y = [%f]\n", win.c.x, win.c.y);
+**		exit(0);
+**	}
+*/
+
 int		my_key_funct(int keycode, t_mlx *mlx)
 {
 	if (keycode == KEY_ESC)
-	{
-		t_win win;
-		win = mlx->win[0];
-		printf("Valeur : p.x = [%d] / p.y = [%d]\nZoom = [%f]\nIter_max = [%d]\n", win.p.x, win.p.y, win.zoom, win.iter_max);
-		printf("Julia(s) : c.x = [%f] / c.y = [%f]\n", win.c.x, win.c.y);
 		exit(0);
-	}
 	else if (keycode == KEY_NPLUS)
 		my_mouse_funct(1, 500, 500, mlx);
 	else if (keycode == KEY_NMOINS)

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/07 02:08:39 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 20:33:09 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_mandelbrot(t_mlx *mlx)
 
 int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 {
-	int			k;;
+	int			k;
 	t_dcoord	z;
 	int			i;
 
@@ -60,7 +60,8 @@ void	mandelbrot(t_mlx *mlx)
 				put_pixel(mlx, b, i);
 		}
 	}
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr, mlx->win[0].img_ptr, 0, 0);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr,
+			mlx->win[0].img_ptr, 0, 0);
 }
 
 void	ft_mandelbrot_power(t_dcoord *z, t_dcoord c, int power)
@@ -71,21 +72,21 @@ void	ft_mandelbrot_power(t_dcoord *z, t_dcoord c, int power)
 	if (power == 2 || power == 3)
 	{
 		z->x = (power == 2) ? t * t - z->y * z->y + c.x\
-			   : (t * t * t) - (3 * t * z->y * z->y) + c.x;
+			: (t * t * t) - (3 * t * z->y * z->y) + c.x;
 		z->y = (power == 2) ? 2 * z->y * t + c.y\
-			   : (3 * t * t * z->y) - (z->y * z->y * z->y) + c.y;
+			: (3 * t * t * z->y) - (z->y * z->y * z->y) + c.y;
 	}
 	else if (power == 4)
 	{
 		z->x = (t * t * t * t) - (6 * t * t * z->y * z->y)\
-			   + (z->y * z->y * z->y * z->y) + c.x;
+			+ (z->y * z->y * z->y * z->y) + c.x;
 		z->y = (4 * t * t * t * z->y) - (4 * t * z->y * z->y * z->y) + c.y;
 	}
 	else if (power == 5)
 	{
 		z->x = (t * t * t * t * t) - (10 * t * t * t * z->y * z->y)\
-			   + (5 * t * z->y * z->y * z->y * z->y) + c.x;
+			+ (5 * t * z->y * z->y * z->y * z->y) + c.x;
 		z->y = (5 * t * t * t * t * z->y) - (10 * t * t * z->y * z->y * z->y)\
-			   + (z->y * z->y * z->y * z->y * z->y) + c.y;
+			+ (z->y * z->y * z->y * z->y * z->y) + c.y;
 	}
 }
