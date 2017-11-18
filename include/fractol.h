@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 20:32:02 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 21:35:45 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ void				ft_abs_dcoord(t_dcoord *z);
 
 void				draw_fractal(t_mlx *mlx);
 void				ft_mandelbrot_power(t_dcoord *z, t_dcoord c, int power);
+void				ft_image(t_mlx *mlx);
 
+void				init_fractal(t_mlx *mlx);
 void				init_mandelbrot(t_mlx *mlx);
 void				init_julia(t_mlx *mlx);
 void				init_burning(t_mlx *mlx);

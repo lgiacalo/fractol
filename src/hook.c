@@ -6,12 +6,22 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 20:35:30 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 21:36:47 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <stdio.h>
+
+void	draw_fractal(t_mlx *mlx)
+{
+	if (mlx->opt == MANDEL)
+		mandelbrot(mlx);
+	else if (mlx->opt == JULIA)
+		julia(mlx);
+	else if (mlx->opt == BURN)
+		burning(mlx);
+}
 
 int		my_mouse_julia_funct(int x, int y, t_mlx *mlx)
 {
@@ -38,18 +48,9 @@ void	ft_option_equation(int keycode, t_mlx *mlx)
 		mlx->power = 4;
 	else if (keycode == KEY_N5)
 		mlx->power = 5;
+	else if (keycode == KEY_R)
+		init_fractal(mlx);
 }
-
-/*
-**	{
-**		t_win win;
-**		win = mlx->win[0];
-**		printf("Val : p.x = [%d] / p.y = [%d]\nZoom = [%f]\nIter_max = [%d]\n",
-**			win.p.x, win.p.y, win.zoom, win.iter_max);
-**		printf("Julia(s) : c.x = [%f] / c.y = [%f]\n", win.c.x, win.c.y);
-**		exit(0);
-**	}
-*/
 
 int		my_key_funct(int keycode, t_mlx *mlx)
 {

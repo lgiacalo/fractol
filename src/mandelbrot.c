@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 20:33:09 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 21:24:44 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	mandelbrot(t_mlx *mlx)
 
 	b.x = -1;
 	k = 0;
+	ft_image(mlx);
 	while (++b.x < XXX)
 	{
 		b.y = -1;

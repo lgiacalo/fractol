@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/29 01:50:04 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 20:24:29 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 21:36:21 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@
 # define KEY_A		0
 # define KEY_C		8
 # define KEY_S		1
+# define KEY_R		15
 
 #endif

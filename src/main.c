@@ -6,24 +6,36 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 20:31:40 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 21:36:48 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	ft_image(t_mlx *mlx)
+{
+	if (mlx->win[0].img_ptr)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->win[0].img_ptr);
+	if (!(mlx->win[0].img_ptr = mlx_new_image(mlx->mlx_ptr, YYY, YYY)))
+		exit(0);
+	if (!(mlx->win[0].img_str = mlx_get_data_addr(mlx->win[0].img_ptr,
+					&(mlx->win[0].bits_per_pixel), &(mlx->win[0].size_line),
+					&(mlx->win[0].endian))))
+		exit(0);
+}
 
 int		ft_init(t_mlx *mlx)
 {
 	if (!(mlx->mlx_ptr = mlx_init(0)))
 		return (EXIT_FAILURE);
 	if (!(mlx->win[0].win_ptr = mlx_new_window(mlx->mlx_ptr,
-			XXX, YYY, "Fractol")))
+					XXX, YYY, "Fractol")))
 		return (EXIT_FAILURE);
 	if (!(mlx->win[0].img_ptr = mlx_new_image(mlx->mlx_ptr, YYY, YYY)))
 		return (EXIT_FAILURE);
 	if (!(mlx->win[0].img_str = mlx_get_data_addr(mlx->win[0].img_ptr,
-			&(mlx->win[0].bits_per_pixel), &(mlx->win[0].size_line),
-			&(mlx->win[0].endian))))
+					&(mlx->win[0].bits_per_pixel), &(mlx->win[0].size_line),
+					&(mlx->win[0].endian))))
 		return (EXIT_FAILURE);
 	draw_fractal(mlx);
 	mlx_key_hook(mlx->win[0].win_ptr, &my_key_funct, mlx);
@@ -66,6 +78,7 @@ int		main(int argc, char **argv)
 	mlx.color = 50;
 	mlx.abs = KEY_S;
 	mlx.power = 2;
+	mlx.win[0].img_ptr = NULL;
 	if (argc < 2 || argc > 3 || !(mlx.opt = reading_choice(argv, argc)))
 		ft_usage();
 	ft_usage_clavier();

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 20:31:22 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 21:39:46 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,6 @@ void	put_pixel(t_mlx *mlx, t_coord b, int i)
 		str[(b.x * 4) + (b.y * size_line) + 1] = 0;
 		str[(b.x * 4) + (b.y * size_line) + 2] = 0;
 	}
-	else
-	{
-		str[b.x * 4 + b.y * size_line] = ((b.y + color)) % 255;
-		str[(b.x * 4) + (b.y * size_line) + 1] = (b.x * (b.y + color)) % 255;
-		str[(b.x * 4) + (b.y * size_line) + 2] = ((b.x + color)) % 255;
-	}
-}
-
-void	draw_fractal(t_mlx *mlx)
-{
-	if (mlx->opt == MANDEL)
-		mandelbrot(mlx);
-	else if (mlx->opt == JULIA)
-		julia(mlx);
-	else if (mlx->opt == BURN)
-		burning(mlx);
 }
 
 double	ft_abs(double x)
