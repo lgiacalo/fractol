@@ -61,7 +61,7 @@ LIB		= libft/libft.a
 #MINI	=  minilibx_macos/libmlx.a -lmlx -L minilibx_macos/
 MINI	=  minilibx_macos/libmlx.a
 
-FRAME	= -lmlx -framework OpenGL -framework AppKit
+FRAME	= -lmlx -framework OpenGL -framework AppKit -lpthread
 
 ################################################################################
 

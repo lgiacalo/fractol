@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 21:35:45 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 22:23:48 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "clavier.h"
 # include "../minilibx_macos/mlx.h"
+# include <pthread.h>
 
 # define MANDEL	(1 << 0)
 # define JULIA	(1 << 1)

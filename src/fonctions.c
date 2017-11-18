@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 21:39:46 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 22:37:30 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	put_pixel(t_mlx *mlx, t_coord b, int i)
 	str = mlx->win[0].img_str;
 	size_line = mlx->win[0].size_line;
 	color = mlx->color;
-	(void)i;
 	if (i != mlx->win[0].iter_max)
 	{
 		str[b.x * 4 + b.y * size_line] = (color * i) % 255;
