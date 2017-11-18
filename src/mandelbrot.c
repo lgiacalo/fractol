@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 23:54:52 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 00:16:51 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,18 @@ int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 	return (i);
 }
 
-void	mandelbrot_calcul1(t_mlx *mlx, int *x, int max)
+void	*mandelbrot_calcul1(void *mlxx)
 {
 	int			k;
 	int			i;
 	t_dcoord	c;
 	t_coord		b;
+	t_mlx		*mlx;
 
-	b.y = *x;
+	mlx = (t_mlx *)mlxx;
+	b.y = mlx->win[0].ind;
 	k = 0;
-	while (b.y < max)
+	while (b.y < mlx->win[0].max)
 	{
 		b.x = 0;
 		while (b.x < XXX)
@@ -62,35 +64,44 @@ void	mandelbrot_calcul1(t_mlx *mlx, int *x, int max)
 		}
 		b.y++;
 	}
-	*x = b.y;
+	mlx->win[0].ind = b.y;
+	pthread_exit(mlx);
 }
 
 void	mandelbrot(t_mlx *mlx)
 {
-	int	x;
-	int	max;
 	int	size;
+	pthread_t	tab[4];
 
 	ft_image(mlx);
 	size = mlx->win[0].size_line;
+	mlx->win[0].ind = 0;
 
-	x = 0;
-	max = XXX/4;
-	mandelbrot_calcul1(mlx, &x, max);
+	mlx->win[0].max = XXX/4;
+//	mandelbrot_calcul1(mlx);
+	pthread_create(&tab[0], NULL, mandelbrot_calcul1, (void *)mlx);
+	pthread_join(tab[0], (void **)mlx);
 
-	max = (XXX / 4) * 2;
+	mlx->win[0].max = (XXX / 4) * 2;
 	mlx->win[0].img_str += (((XXX / 4)) * size);
-	mandelbrot_calcul1(mlx, &x, max);
+//	mandelbrot_calcul1(mlx);
+	pthread_create(&tab[1], NULL, mandelbrot_calcul1, (void *)mlx);
+	pthread_join(tab[1], (void **)mlx);
 
-	max = (XXX / 4) * 3;
+	mlx->win[0].max = (XXX / 4) * 3;
 	mlx->win[0].img_str += (((XXX / 4)) * size);
-	mandelbrot_calcul1(mlx, &x, max);
+//	mandelbrot_calcul1(mlx);
+	pthread_create(&tab[2], NULL, mandelbrot_calcul1, (void *)mlx);
+	pthread_join(tab[2], (void **)mlx);
 
-	max = XXX;
+	mlx->win[0].max = XXX;
 	mlx->win[0].img_str += (((XXX / 4)) * size);
-	mandelbrot_calcul1(mlx, &x, XXX);
+//	mandelbrot_calcul1(mlx);
+	pthread_create(&tab[3], NULL, mandelbrot_calcul1, (void *)mlx);
+	pthread_join(tab[3], (void **)mlx);
 
 	mlx->win[0].img_str -= XXX * size;
+
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr,
 			mlx->win[0].img_ptr, 0, 0);
 }
