@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 22:37:30 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 23:55:16 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ void	put_pixel(t_mlx *mlx, t_coord b, int i)
 	int		size_line;
 	int		color;
 
+	if (b.y >= ((XXX / 4) * 3))
+		b.y = b.y - ((XXX / 4) * 3);
+	else if (b.y >= ((XXX / 4) * 2))
+		b.y = b.y - ((XXX / 4) * 2);
+	else if (b.y >= (XXX / 4))
+		b.y = b.y - (XXX / 4);
 	str = mlx->win[0].img_str;
 	size_line = mlx->win[0].size_line;
 	color = mlx->color;

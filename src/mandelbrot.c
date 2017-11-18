@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 21:24:44 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/18 23:54:52 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,58 @@ int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 	return (i);
 }
 
-void	mandelbrot(t_mlx *mlx)
+void	mandelbrot_calcul1(t_mlx *mlx, int *x, int max)
 {
 	int			k;
 	int			i;
 	t_dcoord	c;
 	t_coord		b;
 
-	b.x = -1;
+	b.y = *x;
 	k = 0;
-	ft_image(mlx);
-	while (++b.x < XXX)
+	while (b.y < max)
 	{
-		b.y = -1;
-		while (++b.y < XXX)
+		b.x = 0;
+		while (b.x < XXX)
 		{
 			c.x = (b.x - mlx->win[k].p.x) / (mlx->win[k].zoom);
 			c.y = (b.y - mlx->win[k].p.y) / (mlx->win[k].zoom);
 			i = mandelbrot_calcul(mlx, c);
 			if (i != mlx->win[k].iter_max)
 				put_pixel(mlx, b, i);
+			b.x++;
 		}
+		b.y++;
 	}
+	*x = b.y;
+}
+
+void	mandelbrot(t_mlx *mlx)
+{
+	int	x;
+	int	max;
+	int	size;
+
+	ft_image(mlx);
+	size = mlx->win[0].size_line;
+
+	x = 0;
+	max = XXX/4;
+	mandelbrot_calcul1(mlx, &x, max);
+
+	max = (XXX / 4) * 2;
+	mlx->win[0].img_str += (((XXX / 4)) * size);
+	mandelbrot_calcul1(mlx, &x, max);
+
+	max = (XXX / 4) * 3;
+	mlx->win[0].img_str += (((XXX / 4)) * size);
+	mandelbrot_calcul1(mlx, &x, max);
+
+	max = XXX;
+	mlx->win[0].img_str += (((XXX / 4)) * size);
+	mandelbrot_calcul1(mlx, &x, XXX);
+
+	mlx->win[0].img_str -= XXX * size;
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr,
 			mlx->win[0].img_ptr, 0, 0);
 }
