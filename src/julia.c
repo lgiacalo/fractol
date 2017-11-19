@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 05:24:22 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/19 16:53:26 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:13:44 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ void	init_julia(t_mlx *mlx)
 	win->c.y = 0.047000;
 }
 
-void	julia(t_mlx *mlx)
+void	*julia(void *mlxx)
 {
 	t_dcoord	z;
 	t_coord		b;
 	int			i;
+	t_mlx		*mlx;
 
-	b.x = -1;
-	ft_image(mlx);
-	while (++b.x < XXX)
+	mlx = (t_mlx *)mlxx;
+	b.y = mlx->win[0].ind - 1;
+	while (++b.y < mlx->win[0].max)
 	{
-		b.y = -1;
-		while (++b.y < YYY)
+		b.x = -1;
+		while (++b.x < XXX)
 		{
 			z.x = (b.x - mlx->win[0].p.x) / mlx->win[0].zoom;
 			z.y = (b.y - mlx->win[0].p.y) / mlx->win[0].zoom;
@@ -52,6 +53,5 @@ void	julia(t_mlx *mlx)
 			put_pixel(mlx, b, i);
 		}
 	}
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr,\
-			mlx->win[0].img_ptr, 0, 0);
+	pthread_exit(NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/19 18:50:28 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:10:56 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 	return (i);
 }
 
-void	*mandelbrot_calcul1(void *mlxx)
+void	*mandelbrot(void *mlxx)
 {
 	int			k;
 	int			i;
@@ -68,32 +68,6 @@ void	*mandelbrot_calcul1(void *mlxx)
 	}
 	mlx->win[0].ind = b.y;
 	pthread_exit(NULL);
-}
-
-void	mandelbrot(t_mlx *mlx)
-{
-	int			size;
-	int			i;
-	pthread_t	tab[4];
-	t_mlx		cop[4];
-
-	ft_image(mlx);
-	i = -1;
-	size = mlx->win[0].size_line;
-	while (++i < 4)
-	{
-		ft_memcpy((void *)(&cop[i]), (void *)mlx, sizeof(t_mlx));
-		cop[i].win[0].ind = (XXX / 4) * i;
-		cop[i].win[0].max = (XXX / 4) * (i + 1);
-		cop[i].win[0].img_str += ((((XXX / 4)) * size) * i);
-		pthread_create(&tab[i], NULL, mandelbrot_calcul1, (void *)&(cop[i]));
-	}
-	pthread_join(tab[0], NULL);
-	pthread_join(tab[1], NULL);
-	pthread_join(tab[2], NULL);
-	pthread_join(tab[3], NULL);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr,
-			mlx->win[0].img_ptr, 0, 0);
 }
 
 void	ft_mandelbrot_power(t_dcoord *z, t_dcoord c, int power)

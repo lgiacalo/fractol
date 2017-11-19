@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 18:52:19 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 21:39:39 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:13:02 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,21 @@ int		burning_calcul(t_mlx *mlx, t_dcoord c)
 	return (i);
 }
 
-void	burning(t_mlx *mlx)
+void	*burning(void *mlxx)
 {
 	int			k;
 	int			i;
 	t_dcoord	c;
 	t_coord		b;
+	t_mlx		*mlx;
 
-	b.x = -1;
+	mlx = (t_mlx *)mlxx;
+	b.y = mlx->win[0].ind - 1;
 	k = 0;
-	ft_image(mlx);
-	while (++b.x < XXX)
+	while (++b.y < mlx->win[0].max)
 	{
-		b.y = -1;
-		while (++b.y < XXX)
+		b.x = -1;
+		while (++b.x < XXX)
 		{
 			c.x = ((b.x - mlx->win[k].p.x) / (mlx->win[k].zoom));
 			c.y = ((b.y - mlx->win[k].p.y) / (mlx->win[k].zoom));
@@ -63,6 +64,5 @@ void	burning(t_mlx *mlx)
 			put_pixel(mlx, b, i);
 		}
 	}
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr,
-			mlx->win[0].img_ptr, 0, 0);
+	pthread_exit(NULL);
 }

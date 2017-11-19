@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/19 18:44:44 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:16:52 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void				init_fractal(t_mlx *mlx);
 void				init_mandelbrot(t_mlx *mlx);
 void				init_julia(t_mlx *mlx);
 void				init_burning(t_mlx *mlx);
-void				mandelbrot(t_mlx *mlx);
-void				julia(t_mlx *mlx);
-void				burning(t_mlx *mlx);
+void				*mandelbrot(void *mlxx);
+void				*julia(void *mlxx);
+void				*burning(void *mlxx);
 
 int					my_key_funct(int keycode, t_mlx *mlx);
 int					my_mouse_funct(int button, int x, int y, t_mlx *mlx);
