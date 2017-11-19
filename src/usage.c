@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 20:28:01 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/18 21:24:56 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:34:24 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_usage_clavier(void)
 {
 	ft_fdprintf(1, "\nUsage Clavier : \n");
+	ft_fdprintf(1, "\t - M/J/B : changement fractale\n");
 	ft_fdprintf(1, "\t - A/S : avec ou sans valeur absolue\n");
 	ft_fdprintf(1, "\t - C : changement couleur\n");
 	ft_fdprintf(1, "\t - +/- : plus ou moins d'iteration\n");
@@ -30,6 +31,6 @@ void	ft_usage(void)
 	ft_fdprintf(1, "\nUsage: ./fractol <filename>\n");
 	ft_fdprintf(1, "- Julia\n");
 	ft_fdprintf(1, "- Burning\n");
-	ft_fdprintf(1, "- Mandelbrot\n");
+	ft_fdprintf(1, "- Mandelbrot\n\n");
 	exit(0);
 }

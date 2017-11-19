@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 18:52:19 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/19 19:13:02 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:45:09 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int		burning_calcul(t_mlx *mlx, t_dcoord c)
 
 void	*burning(void *mlxx)
 {
-	int			k;
 	int			i;
 	t_dcoord	c;
 	t_coord		b;
@@ -52,16 +51,16 @@ void	*burning(void *mlxx)
 
 	mlx = (t_mlx *)mlxx;
 	b.y = mlx->win[0].ind - 1;
-	k = 0;
 	while (++b.y < mlx->win[0].max)
 	{
 		b.x = -1;
 		while (++b.x < XXX)
 		{
-			c.x = ((b.x - mlx->win[k].p.x) / (mlx->win[k].zoom));
-			c.y = ((b.y - mlx->win[k].p.y) / (mlx->win[k].zoom));
+			c.x = ((b.x - mlx->win[0].p.x) / (mlx->win[0].zoom));
+			c.y = ((b.y - mlx->win[0].p.y) / (mlx->win[0].zoom));
 			i = burning_calcul(mlx, c);
-			put_pixel(mlx, b, i);
+			if (i != mlx->win[0].iter_max)
+				put_pixel(mlx, b, i);
 		}
 	}
 	pthread_exit(NULL);

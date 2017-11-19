@@ -6,14 +6,13 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/15 21:13:23 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/19 19:17:13 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:32:58 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
 
-void	ft_thread(t_mlx *mlx, void	*func)
+void	ft_thread(t_mlx *mlx, void *func)
 {
 	int			size;
 	int			i;
@@ -37,20 +36,6 @@ void	ft_thread(t_mlx *mlx, void	*func)
 	pthread_join(tab[3], NULL);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win[0].win_ptr,
 			mlx->win[0].img_ptr, 0, 0);
-}
-
-void	draw_fractal(t_mlx *mlx)
-{
-	void	*func;
-
-	func = NULL;
-	if (mlx->opt == MANDEL)
-		func = mandelbrot;
-	else if (mlx->opt == JULIA)
-		func = julia;
-	else if (mlx->opt == BURN)
-		func = burning;
-	ft_thread(mlx, func);	
 }
 
 int		my_mouse_julia_funct(int x, int y, t_mlx *mlx)
@@ -80,6 +65,13 @@ void	ft_option_equation(int keycode, t_mlx *mlx)
 		mlx->power = 5;
 	else if (keycode == KEY_R)
 		init_fractal(mlx);
+	else if (keycode == KEY_M || keycode == KEY_J || keycode == KEY_B)
+	{
+		(keycode == KEY_M) ? mlx->opt = MANDEL : 0;
+		(keycode == KEY_J) ? mlx->opt = JULIA : 0;
+		(keycode == KEY_B) ? mlx->opt = BURN : 0;
+		init_fractal(mlx);
+	}
 }
 
 int		my_key_funct(int keycode, t_mlx *mlx)

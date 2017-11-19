@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 02:33:41 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/19 18:44:46 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:33:42 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,27 +48,17 @@ void	ft_abs_dcoord(t_dcoord *z)
 	z->y = ft_abs(z->y);
 }
 
-t_mlx	ft_copy(t_mlx mlx)
+int		reading_choice(char **argv, int argc)
 {
-	t_mlx	ret;
+	int	opt;
 
-	ret.opt = mlx.opt;
-	ret.nbr = mlx.nbr;
-	ret.mlx_ptr = mlx.mlx_ptr;
-	ret.color = mlx.color;
-	ret.abs = mlx.abs;
-	ret.power = mlx.power;
-	ret.win[0].size_line = mlx.win[0].size_line;
-	ret.win[0].zoom = mlx.win[0].zoom;
-	ret.win[0].img_str = mlx.win[0].img_str;
-	ret.win[0].p.x = mlx.win[0].p.x;
-	ret.win[0].p.y = mlx.win[0].p.y;
-	ret.win[0].c.x = mlx.win[0].c.x;
-	ret.win[0].c.y = mlx.win[0].c.y;
-	ret.win[0].z.x = mlx.win[0].z.x;
-	ret.win[0].z.y = mlx.win[0].z.y;
-	ret.win[0].iter_max = mlx.win[0].iter_max;
-	ret.win[0].ind = mlx.win[0].ind;
-	ret.win[0].max = mlx.win[0].max;
-	return (ret);
+	(void)argc;
+	opt = 0;
+	if (ft_strchr("Mm", *argv[1]) && ft_strequ("andelbrot", (argv[1] + 1)))
+		opt += MANDEL;
+	else if (ft_strchr("Jj", *argv[1]) && ft_strequ("ulia", (argv[1] + 1)))
+		opt += JULIA;
+	else if (ft_strchr("Bb", *argv[1]) && ft_strequ("urning", (argv[1] + 1)))
+		opt += BURN;
+	return (opt);
 }

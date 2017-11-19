@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 21:21:43 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/19 19:10:56 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:45:07 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,24 @@ int		mandelbrot_calcul(t_mlx *mlx, t_dcoord c)
 
 void	*mandelbrot(void *mlxx)
 {
-	int			k;
 	int			i;
 	t_dcoord	c;
 	t_coord		b;
 	t_mlx		*mlx;
 
 	mlx = (t_mlx *)mlxx;
-	b.y = mlx->win[0].ind;
-	k = 0;
-	while (b.y < mlx->win[0].max)
+	b.y = mlx->win[0].ind - 1;
+	while (++b.y < mlx->win[0].max)
 	{
-		b.x = 0;
-		while (b.x < XXX)
+		b.x = -1;
+		while (++b.x < XXX)
 		{
-			c.x = (b.x - mlx->win[k].p.x) / (mlx->win[k].zoom);
-			c.y = (b.y - mlx->win[k].p.y) / (mlx->win[k].zoom);
+			c.x = (b.x - mlx->win[0].p.x) / (mlx->win[0].zoom);
+			c.y = (b.y - mlx->win[0].p.y) / (mlx->win[0].zoom);
 			i = mandelbrot_calcul(mlx, c);
-			if (i != mlx->win[k].iter_max)
+			if (i != mlx->win[0].iter_max)
 				put_pixel(mlx, b, i);
-			b.x++;
 		}
-		b.y++;
 	}
 	mlx->win[0].ind = b.y;
 	pthread_exit(NULL);

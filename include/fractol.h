@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/19 19:16:52 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:32:08 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,11 @@ double				ft_abs(double x);
 void				ft_abs_dcoord(t_dcoord *z);
 t_mlx				ft_copy(t_mlx mlx);
 
+int					reading_choice(char **argv, int argc);
 void				draw_fractal(t_mlx *mlx);
 void				ft_mandelbrot_power(t_dcoord *z, t_dcoord c, int power);
 void				ft_image(t_mlx *mlx);
+void				ft_thread(t_mlx *mlx, void *func);
 
 void				init_fractal(t_mlx *mlx);
 void				init_mandelbrot(t_mlx *mlx);

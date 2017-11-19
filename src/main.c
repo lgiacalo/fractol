@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:42:21 by lgiacalo          #+#    #+#             */
-/*   Updated: 2017/11/19 18:59:31 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2017/11/19 19:33:41 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ void	ft_image(t_mlx *mlx)
 					&(mlx->win[0].bits_per_pixel), &(mlx->win[0].size_line),
 					&(mlx->win[0].endian))))
 		exit(0);
+}
+
+void	draw_fractal(t_mlx *mlx)
+{
+	void	*func;
+
+	func = NULL;
+	if (mlx->opt == MANDEL)
+		func = mandelbrot;
+	else if (mlx->opt == JULIA)
+		func = julia;
+	else if (mlx->opt == BURN)
+		func = burning;
+	ft_thread(mlx, func);
 }
 
 int		ft_init(t_mlx *mlx)
@@ -43,21 +57,6 @@ int		ft_init(t_mlx *mlx)
 	mlx_hook(mlx->win[0].win_ptr, 6, 0, &my_mouse_julia_funct, mlx);
 	mlx_loop(mlx->mlx_ptr);
 	return (1);
-}
-
-int		reading_choice(char **argv, int argc)
-{
-	int	opt;
-
-	(void)argc;
-	opt = 0;
-	if (ft_strchr("Mm", *argv[1]) && ft_strequ("andelbrot", (argv[1] + 1)))
-		opt += MANDEL;
-	else if (ft_strchr("Jj", *argv[1]) && ft_strequ("ulia", (argv[1] + 1)))
-		opt += JULIA;
-	else if (ft_strchr("Bb", *argv[1]) && ft_strequ("urning", (argv[1] + 1)))
-		opt += BURN;
-	return (opt);
 }
 
 void	init_fractal(t_mlx *mlx)
