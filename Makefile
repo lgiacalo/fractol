@@ -58,7 +58,6 @@ OBJ	= $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 INC	= $(addprefix $(INC_PATH)/,$(INC_NAME))
 
 LIB		= libft/libft.a
-#MINI	=  minilibx_macos/libmlx.a -lmlx -L minilibx_macos/
 MINI	=  minilibx_macos/libmlx.a
 
 FRAME	= -lmlx -framework OpenGL -framework AppKit -lpthread
@@ -72,6 +71,9 @@ ifeq ($(DEBUG), info)
 endif
 ifeq ($(DEBUG), alloc)
 	OPT += -g -fsanitize=address
+endif
+ifeq ($(DEBUG), opti)
+	OPT += -O3
 endif
 	
 export OPT
@@ -123,6 +125,7 @@ norme:
 	$(SPY)echo "$(COLOR)\tNORMINETTE : $(NAME)\n$(FINCOLOR)"
 	$(SPY)norminette $(SRC)
 	$(SPY)norminette include/*.h
+	$(SPY)make norme -C libft/
 
 
 .PHONY : all clean fclean re norme
